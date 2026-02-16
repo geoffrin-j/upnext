@@ -1,3 +1,6 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -6,24 +9,27 @@
 }
 
 :root {
-    --primary-color: #567C8D;
-    --secondary-color: #2F4156;
-    --accent-color: #567C8D;
-    --dark-bg: #2F4156;
-    --light-bg: #F5EFEB;
-    --text-dark: #2F4156;
-    --text-light: #567C8D;
+    --primary-color: #1DBAB4;
+    --secondary-color: #14868A;
+    --accent-color: #F26B5B;
+    --dark-bg: #1A3A4A;
+    --light-bg: #F0F7FA;
+    --text-dark: #1A3A4A;
+    --text-light: #4A7A8A;
     --white: #ffffff;
-    --success: #567C8D;
-    --warning: #567C8D;
-    --sky-blue: #C8D9E6;
+    --success: #1DBAB4;
+    --warning: #F26B5B;
+    --sky-blue: #B8E6E4;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
     color: var(--text-dark);
     background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -50,8 +56,9 @@ header {
 
 .logo {
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 600;
     color: var(--secondary-color);
+    letter-spacing: -0.5px;
 }
 
 nav ul {
@@ -63,7 +70,9 @@ nav ul {
 nav a {
     text-decoration: none;
     color: var(--text-dark);
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
     transition: color 0.3s;
     position: relative;
 }
@@ -99,7 +108,7 @@ nav a:hover::after {
 
 /* Hero Section */
 .hero {
-    background: var(--secondary-color);
+    background: linear-gradient(135deg, #1DBAB4, #14868A);
     color: var(--white);
     padding: 100px 20px;
     text-align: center;
@@ -107,31 +116,112 @@ nav a:hover::after {
 
 .hero h1 {
     font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
     margin-bottom: 1rem;
     animation: fadeInUp 0.8s ease;
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
+    font-weight: 300;
     margin-bottom: 2rem;
+    opacity: 0.95;
     animation: fadeInUp 0.8s ease 0.2s backwards;
 }
 
 .cta-button {
     display: inline-block;
-    background: var(--white);
-    color: var(--primary-color);
-    padding: 15px 40px;
+    background: var(--accent-color);
+    color: var(--white);
+    padding: 14px 38px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeInUp 0.8s ease 0.4s backwards;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(242,107,91,0.4);
+}
+
+/* Hero Grid Layout */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-with-image {
+    text-align: left;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));
+}
+
+/* Circle Highlights */
+.circle-highlights-section {
+    background: linear-gradient(135deg, #1DBAB4, #14868A);
+    padding: 60px 20px;
+}
+
+.circle-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.circle-item {
+    text-align: center;
+    color: var(--white);
+}
+
+.circle-icon {
+    width: 110px;
+    height: 110px;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    color: var(--white);
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.circle-item:hover .circle-icon {
+    border-color: rgba(255,255,255,0.9);
+    transform: scale(1.05);
+}
+
+.circle-item span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+/* Section Images */
+.section-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 /* Section Styles */
@@ -141,7 +231,9 @@ section {
 
 section h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
     margin-bottom: 3rem;
     color: var(--text-dark);
 }
@@ -149,7 +241,8 @@ section h2 {
 .section-subtitle {
     text-align: center;
     color: var(--text-light);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 300;
     margin-top: -2rem;
     margin-bottom: 3rem;
 }
@@ -164,6 +257,7 @@ section h2 {
 
 .about-text h3 {
     color: var(--primary-color);
+    font-weight: 500;
     margin-bottom: 1rem;
 }
 
@@ -198,6 +292,7 @@ section h2 {
 
 .highlight-item h4 {
     color: var(--primary-color);
+    font-weight: 500;
     margin-bottom: 0.5rem;
 }
 
@@ -229,7 +324,8 @@ section h2 {
 }
 
 .course-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
     margin-bottom: 0.5rem;
 }
 
@@ -268,11 +364,14 @@ section h2 {
     padding: 12px 30px;
     border-radius: 25px;
     text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
     transition: background 0.3s;
 }
 
 .course-button:hover {
-    background: var(--secondary-color);
+    background: #14868A;
 }
 
 /* Features Section */
@@ -301,6 +400,8 @@ section h2 {
 
 .feature-card h3 {
     color: var(--primary-color);
+    font-weight: 500;
+    font-size: 1.05rem;
     margin-bottom: 1rem;
 }
 
@@ -324,7 +425,8 @@ section h2 {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 0.9rem;
     color: var(--text-dark);
 }
 
@@ -345,19 +447,20 @@ section h2 {
 }
 
 .submit-btn {
-    background: var(--primary-color);
+    background: var(--accent-color);
     color: var(--white);
     padding: 12px 40px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
     transition: background 0.3s;
 }
 
 .submit-btn:hover {
-    background: var(--secondary-color);
+    background: #E05A4A;
 }
 
 .contact-info {
@@ -378,6 +481,7 @@ section h2 {
 
 .contact-item h4 {
     color: var(--primary-color);
+    font-weight: 500;
     margin-bottom: 0.5rem;
 }
 
@@ -396,6 +500,9 @@ footer {
 }
 
 .footer-section h3 {
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
     margin-bottom: 1rem;
 }
 
@@ -418,6 +525,31 @@ footer {
     opacity: 1;
 }
 
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
@@ -427,7 +559,7 @@ footer {
 
 /* Course Detail Page */
 .course-detail-hero {
-    background: var(--secondary-color);
+    background: linear-gradient(135deg, #1DBAB4, #14868A);
     color: var(--white);
     padding: 60px 20px;
 }
@@ -601,6 +733,37 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-with-image {
+        text-align: center;
+    }
+
+    .hero-image img {
+        max-width: 80%;
+    }
+
+    .circle-highlights {
+        gap: 1.5rem;
+    }
+
+    .circle-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .circle-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .circle-item span {
+        font-size: 0.7rem;
+    }
+
     .mobile-menu-btn {
         display: block;
     }
