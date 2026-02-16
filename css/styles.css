@@ -9,19 +9,19 @@
 }
 
 :root {
-    --primary-color: #98D2C9;
-    --secondary-color: #123754;
-    --accent-color: #ED7961;
-    --dark-bg: #123754;
-    --light-bg: #E4F2EF;
-    --text-dark: #123754;
-    --text-light: #4A6B7C;
+    --primary-color: #4B8F9C;
+    --secondary-color: #3A7280;
+    --accent-color: #E58038;
+    --dark-bg: #2C5F6A;
+    --light-bg: #F0F6F7;
+    --text-dark: #2C3E42;
+    --text-light: #4B8F9C;
     --white: #ffffff;
-    --success: #98D2C9;
-    --warning: #ED7961;
-    --sky-blue: #E4F2EF;
-    --peach: #FECF8D;
-    --blush: #E4F2EF;
+    --success: #70B76A;
+    --warning: #E58038;
+    --sky-blue: #6FB9CA;
+    --gold: #EACA42;
+    --lime: #BACA4C;
 }
 
 body {
@@ -111,7 +111,7 @@ nav a:hover::after {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #123754, #1B4D6E);
+    background: linear-gradient(135deg, #4B8F9C, #3A7280);
     color: var(--white);
     padding: 100px 20px;
     text-align: center;
@@ -149,7 +149,7 @@ nav a:hover::after {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(237,121,97,0.4);
+    box-shadow: 0 10px 25px rgba(229,128,56,0.4);
 }
 
 /* Hero Grid Layout */
@@ -177,7 +177,7 @@ nav a:hover::after {
 
 /* Circle Highlights */
 .circle-highlights-section {
-    background: linear-gradient(135deg, #123754, #1B4D6E);
+    background: linear-gradient(135deg, #4B8F9C, #3A7280);
     padding: 60px 20px;
 }
 
@@ -374,7 +374,7 @@ section h2 {
 }
 
 .course-button:hover {
-    background: #D36B55;
+    background: #CC6E2E;
 }
 
 /* Features Section */
@@ -463,7 +463,7 @@ section h2 {
 }
 
 .submit-btn:hover {
-    background: #D36B55;
+    background: #CC6E2E;
 }
 
 .contact-info {
@@ -562,7 +562,7 @@ footer {
 
 /* Course Detail Page */
 .course-detail-hero {
-    background: linear-gradient(135deg, #123754, #1B4D6E);
+    background: linear-gradient(135deg, #4B8F9C, #3A7280);
     color: var(--white);
     padding: 60px 20px;
 }
