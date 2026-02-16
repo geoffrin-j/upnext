@@ -9,17 +9,22 @@
 }
 
 :root {
-    --primary-color: #1DBAB4;
-    --secondary-color: #14868A;
-    --accent-color: #F26B5B;
-    --dark-bg: #1A3A4A;
-    --light-bg: #F0F7FA;
-    --text-dark: #1A3A4A;
-    --text-light: #4A7A8A;
+    --primary-color: #5BB5B5;
+    --secondary-color: #4A9E9E;
+    --accent-color: #5BB5B5;
+    --dark-bg: #5A6B6B;
+    --light-bg: #F2F0ED;
+    --text-dark: #4A5568;
+    --text-light: #78909C;
     --white: #ffffff;
-    --success: #1DBAB4;
-    --warning: #F26B5B;
-    --sky-blue: #B8E6E4;
+    --success: #5BB5B5;
+    --warning: #E8836B;
+    --sky-blue: #B2D8D8;
+    --seafoam: #80C4B8;
+    --blue-mint: #B2D8D8;
+    --steel: #6B7B7B;
+    --medium-grey: #B0B0B0;
+    --canvas: #F2F0ED;
 }
 
 body {
@@ -59,6 +64,7 @@ header {
     font-weight: 600;
     color: var(--secondary-color);
     letter-spacing: -0.5px;
+    text-decoration: none;
 }
 
 nav ul {
@@ -108,7 +114,7 @@ nav a:hover::after {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #1DBAB4, #14868A);
+    background: linear-gradient(135deg, #5BB5B5, #4A9E9E);
     color: var(--white);
     padding: 100px 20px;
     text-align: center;
@@ -146,7 +152,7 @@ nav a:hover::after {
 
 .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(242,107,91,0.4);
+    box-shadow: 0 10px 25px rgba(91,181,181,0.4);
 }
 
 /* Hero Grid Layout */
@@ -174,7 +180,7 @@ nav a:hover::after {
 
 /* Circle Highlights */
 .circle-highlights-section {
-    background: linear-gradient(135deg, #1DBAB4, #14868A);
+    background: linear-gradient(135deg, #5BB5B5, #4A9E9E);
     padding: 60px 20px;
 }
 
@@ -371,7 +377,7 @@ section h2 {
 }
 
 .course-button:hover {
-    background: #14868A;
+    background: #4A9E9E;
 }
 
 /* Features Section */
@@ -460,7 +466,7 @@ section h2 {
 }
 
 .submit-btn:hover {
-    background: #E05A4A;
+    background: #4A9E9E;
 }
 
 .contact-info {
@@ -545,7 +551,7 @@ footer {
 }
 
 .social-links a:hover {
-    background: var(--accent-color);
+    background: var(--seafoam);
     transform: translateY(-3px);
     opacity: 1;
 }
@@ -559,7 +565,7 @@ footer {
 
 /* Course Detail Page */
 .course-detail-hero {
-    background: linear-gradient(135deg, #1DBAB4, #14868A);
+    background: linear-gradient(135deg, #5BB5B5, #4A9E9E);
     color: var(--white);
     padding: 60px 20px;
 }
