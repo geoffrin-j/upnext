@@ -8,10 +8,20 @@ async function displayCourses() {
         
         coursesContainer.innerHTML = courses.map(course => `
             <div class="course-card">
+                ${course.image ? `
+                <div class="course-card-img">
+                    <img src="${course.image}" alt="${course.title}">
+                    <div class="course-card-img-overlay">
+                        <h3>${course.title}</h3>
+                        <p class="course-duration">${course.duration} | ${course.level}</p>
+                    </div>
+                </div>
+                ` : `
                 <div class="course-header">
                     <h3>${course.title}</h3>
                     <p class="course-duration">${course.duration} | ${course.level}</p>
                 </div>
+                `}
                 <div class="course-body">
                     <p>${course.shortDescription}</p>
                     <ul>

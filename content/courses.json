@@ -2,6 +2,7 @@
   "courses": [
     {
       "id": "data-science",
+      "image": "images/course-data-science.jpg",
       "title": "Data Science & Machine Learning",
       "subtitle": "Professional Certification Program",
       "duration": "6 Months",
@@ -84,6 +85,7 @@
     },
     {
       "id": "ai-genai",
+      "image": "images/course-ai-genai.jpg",
       "title": "AI & Generative AI",
       "subtitle": "Professional Certification Program",
       "duration": "3-4 Months",
@@ -222,6 +224,7 @@
     },
     {
       "id": "python-analytics",
+      "image": "images/course-python-analytics.jpg",
       "title": "Python + Data Analytics",
       "subtitle": "Beginner Professional Program",
       "duration": "2 Months (8 Weeks)",

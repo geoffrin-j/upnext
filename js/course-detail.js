@@ -31,12 +31,25 @@ function displayCourseHero(course) {
     const heroSection = document.getElementById('courseHero');
     heroSection.innerHTML = `
         <div class="container">
-            <h1>${course.title}</h1>
-            <p style="font-size: 1.3rem; margin-top: 1rem;">${course.subtitle}</p>
-            <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
-                <div>⏱️ <strong>Duration:</strong> ${course.duration}</div>
-                <div>📊 <strong>Level:</strong> ${course.level}</div>
-                <div>💻 <strong>Mode:</strong> ${course.mode}</div>
+            <div class="hero-grid">
+                <div class="hero-with-image">
+                    <h1>${course.title}</h1>
+                    <p style="font-size: 1.1rem; margin-top: 0.75rem; color: rgba(255,255,255,0.75); font-weight: 400;">${course.subtitle}</p>
+                    <div class="course-meta-tags">
+                        <span><strong>Duration</strong> ${course.duration}</span>
+                        <span><strong>Level</strong> ${course.level}</span>
+                        <span><strong>Mode</strong> ${course.mode}</span>
+                    </div>
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="contact.html" class="cta-button">Apply Now</a>
+                        <a href="contact.html?type=counseling" class="cta-button cta-outline">Book Counseling</a>
+                    </div>
+                </div>
+                ${course.image ? `
+                <div class="hero-image">
+                    <img src="${course.image}" alt="${course.title}" />
+                </div>
+                ` : ''}
             </div>
         </div>
     `;
