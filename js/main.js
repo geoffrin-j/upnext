@@ -7,8 +7,7 @@ function applyTheme(theme) {
 }
 
 function initTheme() {
-    const saved = localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const saved = localStorage.getItem('theme') || 'dark';
     applyTheme(saved);
 }
 

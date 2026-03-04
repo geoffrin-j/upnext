@@ -23,6 +23,11 @@ async function displayCourses() {
                 </div>
                 `}
                 <div class="course-body">
+                    <div class="course-tags">
+                        <span class="course-tag">${course.duration}</span>
+                        <span class="course-tag">${course.level}</span>
+                        ${course.mode ? `<span class="course-tag">${course.mode.includes('Online') && course.mode.includes('Offline') ? 'Hybrid' : 'Live Online'}</span>` : ''}
+                    </div>
                     <p>${course.shortDescription}</p>
                     <ul>
                         ${course.highlights.slice(0, 4).map(highlight => `

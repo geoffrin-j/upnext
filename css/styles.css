@@ -1,5 +1,5 @@
 /* ─── Fonts ──────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* ─── Design Tokens ──────────────────────────────────────────── */
 :root {
@@ -132,6 +132,7 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.7;
     color: var(--text-body);
@@ -141,11 +142,22 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 800;
     line-height: 1.2;
     color: var(--text-dark);
-    letter-spacing: -0.03em;
+}
+
+/* Display headings — Space Grotesk for personality and hierarchy */
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+/* Supporting headings — stay in Plus Jakarta Sans */
+h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 p { color: var(--text-body); }
@@ -253,7 +265,7 @@ html[data-theme="dark"] header {
 }
 
 .logo-up {
-    font-weight: 600;
+    font-weight: 300;
     color: var(--text-dark);
 }
 
@@ -656,6 +668,7 @@ html[data-theme="dark"] nav a.active {
     z-index: 10001;
     mix-blend-mode: screen;
     will-change: transform;
+    opacity: 0;
 }
 
 #cursor-ring {
@@ -667,6 +680,7 @@ html[data-theme="dark"] nav a.active {
     z-index: 10000;
     will-change: transform;
     transition: border-color 0.2s, width 0.2s, height 0.2s;
+    opacity: 0;
 }
 
 /* ─── Hero Canvas ────────────────────────────────────────────── */
@@ -749,7 +763,7 @@ html[data-theme="dark"] .about-text ul li::before {
     border-radius: 12px;
     border: 1px solid var(--border);
     border-left: 3px solid var(--emerald-deep);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 html[data-theme="dark"] .highlight-item {
@@ -759,7 +773,9 @@ html[data-theme="dark"] .highlight-item {
 }
 
 .highlight-item:hover {
-    box-shadow: 0 4px 20px var(--glow-emerald);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px var(--glow-emerald);
+    border-color: rgba(110,231,183,0.3);
 }
 
 .highlight-header {
@@ -1325,7 +1341,7 @@ html[data-theme="dark"] .form-group select:focus {
     margin-bottom: 0.75rem;
     border: 1px solid var(--border);
     background: var(--light-card);
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 html[data-theme="dark"] .contact-item {
@@ -1333,7 +1349,15 @@ html[data-theme="dark"] .contact-item {
     border-color: var(--border);
 }
 
-.contact-item:hover { border-color: rgba(110,231,183,0.3); }
+.contact-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(110,231,183,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+html[data-theme="dark"] .contact-item:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
 
 .contact-icon {
     width: 40px;
@@ -1897,19 +1921,26 @@ html[data-theme="dark"] code {
 }
 
 @media (max-width: 480px) {
+    body { font-size: 1rem; } /* 16px minimum on mobile */
     section h2 { font-size: 1.55rem; }
     .hero h1 { font-size: 1.75rem; }
-    .promo-left-panel { padding: 2rem 1.5rem 4rem; }
-    .promo-left-panel h1 { font-size: 1.75rem; }
+    .promo-left-panel { padding: 1.75rem 1.25rem 3.5rem; }
+    .promo-left-panel h1 { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .promo-desc { display: none; } /* hide description — slider has fixed height */
+    .hero-cta { flex-direction: column; width: 100%; }
+    .hero-cta .cta-button { width: 100%; justify-content: center; text-align: center; }
     .footer-content { grid-template-columns: 1fr; }
 }
 
 /* ─── Minimum 320px (very small phones) ─────────────────────── */
 @media (max-width: 360px) {
     .container { padding: 0 16px; }
+    .promo-left-panel { padding: 1.5rem 1rem 3rem; }
     .promo-left-panel h1 { font-size: 1.5rem; }
     .promo-left-panel h2 { font-size: 1.35rem; }
     .cta-button { padding: 0.65rem 1.25rem; font-size: 0.85rem; }
+    .hero-accent { font-size: 0.85rem; }
+    .promo-label { display: none; }
 }
 
 /* ─── Touch Targets (≥44px) ──────────────────────────────────── */
@@ -2312,6 +2343,122 @@ html[data-theme="dark"] .feature-card:hover {
     }
 }
 
+/* ─── Learning Approach Cards ────────────────────────────────── */
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.approach-card {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.approach-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+    border-color: rgba(110,231,183,0.25);
+}
+
+html[data-theme="dark"] .approach-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+}
+
+.approach-card h3 {
+    color: var(--emerald-deep);
+    margin: 0;
+}
+
+/* ─── Our Promise Banner ─────────────────────────────────────── */
+.promise-banner {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: var(--bg-darkest);
+    color: white;
+    border-radius: 16px;
+    border: 1px solid rgba(110,231,183,0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.promise-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(110,231,183,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(110,231,183,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.promise-banner h3 {
+    color: white;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+    font-size: 1.1rem;
+}
+
+.promise-banner p {
+    color: rgba(255,255,255,0.65);
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ─── Dark CTA Section ───────────────────────────────────────── */
+.section-dark-cta {
+    background: var(--bg-darkest);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-dark-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(110,231,183,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(110,231,183,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.section-dark-cta .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-dark-cta h2 { color: white; }
+
+.section-dark-cta .cta-desc {
+    color: rgba(255,255,255,0.55);
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-flex {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ─── Mission List ───────────────────────────────────────────── */
+.mission-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.5rem;
+}
+
+.mission-list li { padding: 0.3rem 0; }
+
 /* ─── Animated Grid Background ──────────────────────────────── */
 @keyframes gridDrift {
     from { background-position: 0 0; }
@@ -2323,6 +2470,8 @@ html[data-theme="dark"] .feature-card:hover {
 .hero::before,
 .course-detail-hero::before,
 .circle-highlights-section::before,
+.promise-banner::before,
+.section-dark-cta::before,
 .footer::before,
 .admin-header::before {
     animation: gridDrift 28s linear infinite;
@@ -2395,4 +2544,57 @@ html[data-theme="dark"] .feature-card:hover {
 }
 @media (prefers-reduced-motion: reduce) {
     .wa-fab-pulse { animation: none; }
+}
+
+/* ─── Noise Texture Overlay ──────────────────────────────────── */
+.hero::after,
+.section-dark-cta::after,
+.promise-banner::after,
+.circle-highlights-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ─── FAQ Items ──────────────────────────────────────────────── */
+.faq-item {
+    background: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    border-color: rgba(110,231,183,0.3);
+}
+
+html[data-theme="dark"] .faq-item {
+    background: var(--bg-card-dark);
+    border-color: var(--border);
+}
+
+html[data-theme="dark"] .faq-item:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    border-color: rgba(110,231,183,0.25);
+}
+
+.faq-item h4 { color: var(--emerald-deep); margin-bottom: 0.5rem; }
+html[data-theme="dark"] .faq-item h4 { color: var(--emerald); }
+
+/* ─── Glassmorphism Card Variant ─────────────────────────────── */
+.glass-card {
+    background: rgba(110,231,183,0.06);
+    border: 1px solid rgba(110,231,183,0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
