@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Courses - Career Craft Academy</title>
-    <meta name="description" content="Explore our comprehensive AI, Data Science, and Machine Learning programs designed for career transformation.">
+    <title>Our Courses - upNext</title>
+    <meta name="description" content="Explore upNext's comprehensive AI, Data Science, and Machine Learning programs designed for career transformation.">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
-    <!-- Page Hero -->
-    <section class="hero" style="padding: 60px 20px;">
-        <div class="container">
-            <h1>Our Programs</h1>
-            <p>Choose the path that aligns with your career goals</p>
-        </div>
-    </section>
-
+    <main id="main-content">
     <!-- Courses Section -->
     <section>
         <div class="container">
@@ -65,16 +60,19 @@
     </section>
 
     <!-- Admissions CTA -->
-    <section style="background: var(--gradient); color: white; text-align: center;">
-        <div class="container">
-            <h2 style="color: white;">Admissions Open - Limited Seats!</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Personalized mentoring with small batch sizes</p>
+    <section style="background: var(--bg-darkest); color: white; text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(110,231,183,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 style="color: white; letter-spacing: -0.045em;">Admissions Open — Limited Seats!</h2>
+            <p style="font-size: 1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem;">Personalized mentoring with small batch sizes</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
                 <a href="contact.html" class="cta-button">Apply Now</a>
-                <a href="contact.html?type=counseling" class="cta-button">Schedule Counseling</a>
+                <a href="contact.html?type=counseling" class="cta-button cta-outline">Schedule Counseling</a>
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>

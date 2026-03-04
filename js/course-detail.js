@@ -21,7 +21,7 @@ async function loadCourseDetails() {
         displayCourseSidebar(course);
         
         // Update page title
-        document.title = `${course.title} - Career Craft Academy`;
+        document.title = `${course.title} - upNext`;
     } catch (error) {
         console.error('Error loading course details:', error);
     }
@@ -199,16 +199,16 @@ function displayCourseSidebar(course) {
         
         <div class="info-box" style="background: var(--gradient); color: white;">
             <h3 style="color: white;">Ready to Apply?</h3>
-            <p style="margin-bottom: 1.5rem;">Limited seats per batch for personalized attention.</p>
+            <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.85);">Limited seats per batch for personalized attention.</p>
             <a href="contact.html" class="cta-button" style="display: block; text-align: center; margin-bottom: 1rem;">Apply Now</a>
             <a href="contact.html?type=counseling" class="cta-button" style="display: block; text-align: center;">Book Counseling</a>
         </div>
         
         <div class="info-box">
             <h3>Need Help?</h3>
-            <p>📧 careercraft@gmail.com</p>
+            <p>📧 upnext@gmail.com</p>
             <p>📱 +91 989 523 451</p>
-            <p style="margin-top: 1rem;">📍 Career craft academy,<br>3C Vimson Serene,<br>Opposite St.Thomas College,<br>Thrissur 695 001</p>
+            <p style="margin-top: 1rem;">📍 upNext,<br>3C Vimson Serene,<br>Opposite St.Thomas College,<br>Thrissur 695 001</p>
         </div>
     `;
 }

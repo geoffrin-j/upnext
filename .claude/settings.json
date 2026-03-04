@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \":*)"
+    ],
+    "additionalDirectories": [
+      "/Users/geoffrin/.claude/projects/-Users-geoffrin-Documents-Projects-upnext-website"
+    ]
+  }
+}

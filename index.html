@@ -3,43 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Craft Academy - Building Intelligence. Empowering Futures.</title>
-    <meta name="description" content="Career-focused AI & Data Science institute in Thrissur offering practical, industry-aligned training in Data Science, Machine Learning, and Generative AI.">
+    <title>upNext — Building Intelligence. Empowering Futures.</title>
+    <meta name="description" content="upNext — Career-focused AI & Data Science institute in Thrissur offering practical, industry-aligned training in Data Science, Machine Learning, and Generative AI.">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-with-image">
-                    <h1>Building <span>Intelligence.</span><br>Empowering Futures.</h1>
-                    <p>Transform yourself into an industry-ready AI &amp; Data Science professional. Practical, mentor-led training that takes you from learner to career-ready.</p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="courses.html" class="cta-button">Explore Programs</a>
-                        <a href="contact.html" class="cta-button cta-outline">Get in Touch</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="images/hero.jpg" alt="Career growth — climb to the top with AI &amp; Data Science skills" />
-                </div>
+    <!-- Cursor glow -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- Screen reader live region for slider -->
+    <div id="sliderStatus" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+    <!-- Promo Banner Slider -->
+    <div class="promo-slider" id="promoBanner" role="region" aria-label="Program highlights" aria-roledescription="carousel">
+        <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+        <!-- Left: fixed content panel — JS updates this on each slide change -->
+        <div class="promo-left-panel" id="heroLeft">
+            <p class="promo-label" id="heroLabel">upNext</p>
+            <p class="hero-accent" id="heroAccent"><em>UP</em> now. you are <em>NEXT.</em></p>
+            <h1 id="heroHeading">Building <span id="typedHero" class="typed-span"></span><br>Empowering Futures.</h1>
+            <p class="promo-desc" id="heroDesc">Transform yourself into an industry-ready AI &amp; Data Science professional. Practical, mentor-led training that takes you from learner to career-ready.</p>
+            <div class="hero-cta" id="heroCta">
+                <a href="courses.html" class="cta-button">Explore Programs</a>
+                <a href="contact.html" class="cta-button cta-outline">Get in Touch</a>
             </div>
         </div>
-    </section>
+
+        <!-- Right: image slides only -->
+        <div class="promo-right-panel" id="heroRight">
+            <div class="promo-slide active">
+                <img src="images/hero.jpg" alt="Career growth — climb to the top with AI &amp; Data Science skills">
+            </div>
+            <div class="promo-slide">
+                <img src="images/course-ai-genai2.jpg" alt="AI &amp; Generative AI">
+            </div>
+            <div class="promo-slide">
+                <img src="images/course-python-analytics.jpg" alt="Data Science">
+            </div>
+            <div class="promo-slide">
+                <img src="images/course-python-analytics.jpg" alt="Python &amp; Analytics">
+            </div>
+            <div class="promo-slide">
+                <img src="images/course-ai-genai1.jpg" alt="AI &amp; Generative AI">
+            </div>
+            <div class="promo-slide">
+                <img src="images/course-data-science.jpg" alt="Data Science &amp; Machine Learning">
+            </div>
+            <div class="promo-slide">
+                <img src="images/course-data-science2.jpg" alt="Python &amp; Analytics">
+            </div>
+        </div>
+
+        <!-- Navigation dots -->
+        <div class="promo-dots" id="promoDots" role="tablist" aria-label="Slide navigation"></div>
+
+        <!-- Arrows -->
+        <button class="promo-arrow promo-prev" id="promoPrev" aria-label="Previous slide">&#8592;</button>
+        <button class="promo-arrow promo-next" id="promoNext" aria-label="Next slide">&#8594;</button>
+    </div>
+
+    <main id="main-content">
+
+    <!-- Tagline Ticker -->
+    <div class="tagline-ticker" aria-hidden="true">
+        <div class="tagline-track">
+            <span class="ticker-hero">UP now. you are NEXT.</span><span class="ticker-sep">·</span>
+            <span>next is now. upNext.</span><span class="ticker-sep">·</span>
+            <span>be upNext.</span><span class="ticker-sep">·</span>
+            <span>up your skills. Next your career.</span><span class="ticker-sep">·</span>
+            <span>up. learn. Next.</span><span class="ticker-sep">·</span>
+            <span>your next move is upNext.</span><span class="ticker-sep">·</span>
+            <!-- duplicate for seamless loop -->
+            <span class="ticker-hero">UP now. you are NEXT.</span><span class="ticker-sep">·</span>
+            <span>next is now. upNext.</span><span class="ticker-sep">·</span>
+            <span>be upNext.</span><span class="ticker-sep">·</span>
+            <span>up your skills. Next your career.</span><span class="ticker-sep">·</span>
+            <span>up. learn. Next.</span><span class="ticker-sep">·</span>
+            <span>your next move is upNext.</span><span class="ticker-sep">·</span>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about">
         <div class="container">
-            <h2>Welcome to Career Craft Academy</h2>
+            <h2>Welcome to upNext</h2>
             <p class="section-subtitle">Where Learning Meets Real-World Excellence</p>
             
             <div class="about-content">
                 <div class="about-text">
                     <h3>Who We Are</h3>
-                    <p>Career Craft Academy is a career-focused AI & Data Science institute dedicated to delivering practical, research-oriented, and industry-aligned training. Founded by passionate software engineers, we believe learning should go beyond theory.</p>
+                    <p>upNext is a career-focused AI & Data Science institute dedicated to delivering practical, research-oriented, and industry-aligned training. Founded by passionate software engineers, we believe learning should go beyond theory.</p>
 
                     <h3 style="margin-top: 2rem;">Our Approach Emphasizes:</h3>
                     <ul>
@@ -129,7 +189,7 @@
     </section>
 
     <!-- Learning Approach -->
-    <section style="background: var(--light-bg); border-top: 1px solid #E2EAF0; border-bottom: 1px solid #E2EAF0;">
+    <section style="background: var(--light-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
         <div class="container">
             <h2>Our Learning Approach</h2>
             <p class="section-subtitle">Structured. Practical. Professional.</p>
@@ -166,36 +226,39 @@
                 </div>
             </div>
             
-            <p style="text-align: center; margin-top: 2.5rem; font-size: 1rem; color: var(--primary-color); font-weight: 600; letter-spacing: 0.3px;">We emphasize understanding, not memorization.</p>
+            <p style="text-align: center; margin-top: 2.5rem; font-size: 1rem; color: var(--emerald-deep); font-weight: 700; letter-spacing: 0.01em;">We emphasize understanding, not memorization.</p>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section style="background: var(--gradient); color: white; text-align: center;">
-        <div class="container">
-            <h2 style="color: white; letter-spacing: -0.8px;">Ready to Transform Your Career?</h2>
-            <p style="font-size: 1rem; margin-bottom: 2.2rem; color: rgba(255,255,255,0.7);">Limited seats per batch to ensure personalized mentoring</p>
+    <section style="background: var(--bg-darkest); color: white; text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(110,231,183,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h2 style="color: white; letter-spacing: -0.045em;">Ready to Transform Your Career?</h2>
+            <p style="font-size: 1rem; margin-bottom: 2.2rem; color: rgba(255,255,255,0.55); margin-top: 0.5rem;">Limited seats per batch to ensure personalized mentoring</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="contact.html" class="cta-button">Apply Now</a>
                 <a href="courses.html" class="cta-button cta-outline">View All Courses</a>
             </div>
 
-            <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem;">
+            <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; border-top: 1px solid rgba(110,231,183,0.1); padding-top: 2.5rem;">
                 <div>
-                    <p style="font-size: 0.7rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--secondary-color); margin-bottom: 0.4rem; font-weight: 600;">Location</p>
-                    <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">Thrissur, Kerala</p>
+                    <p style="font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.4rem; font-weight: 700;">Location</p>
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem;">Thrissur, Kerala</p>
                 </div>
                 <div>
-                    <p style="font-size: 0.7rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--secondary-color); margin-bottom: 0.4rem; font-weight: 600;">Mode</p>
-                    <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">Offline + Live Online</p>
+                    <p style="font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.4rem; font-weight: 700;">Mode</p>
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem;">Offline + Live Online</p>
                 </div>
                 <div>
-                    <p style="font-size: 0.7rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--secondary-color); margin-bottom: 0.4rem; font-weight: 600;">Batch Size</p>
-                    <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">Limited Seats</p>
+                    <p style="font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--emerald); margin-bottom: 0.4rem; font-weight: 700;">Batch Size</p>
+                    <p style="color: rgba(255,255,255,0.75); font-size: 0.95rem;">Limited Seats</p>
                 </div>
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>

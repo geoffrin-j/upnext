@@ -316,7 +316,7 @@
             "Data cleaning in Excel",
             "Basic dashboards"
           ],
-          "practical": "Build a small Excel dashboard.",
+          "practical": ["Build a small Excel dashboard."],
           "outcome": "Students gain industry-relevant Excel skills."
         },
         {

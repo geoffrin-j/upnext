@@ -1,9 +1,40 @@
 <header>
     <div class="container header-container">
-        <a href="index.html" class="logo">Career Craft Academy</a>
-        <nav>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-            <ul id="navMenu">
+        <a href="index.html" class="logo">
+            <svg class="logo-icon" width="12" height="14" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="lg1" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#6EE7B7"/>
+                        <stop offset="100%" stop-color="#38BDF8"/>
+                    </linearGradient>
+                    <linearGradient id="lg2" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#4DD8A8"/>
+                        <stop offset="100%" stop-color="#22C5EC"/>
+                    </linearGradient>
+                    <linearGradient id="lg3" x1="0" y1="0" x2="24" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#2AB898"/>
+                        <stop offset="100%" stop-color="#0BA8D3"/>
+                    </linearGradient>
+                </defs>
+                <polyline points="2,10 12,2 22,10" stroke="url(#lg1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="2,17 12,9 22,17" stroke="url(#lg2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="2,24 12,16 22,24" stroke="url(#lg3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="logo-wordmark">
+                <span class="logo-up">up</span><span class="logo-next">Next</span>
+            </span>
+        </a>
+        <nav aria-label="Main navigation">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span id="themeIcon" aria-hidden="true">🌙</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navMenu">
+                <span aria-hidden="true">☰</span>
+            </button>
+            <ul id="navMenu" role="list">
                 <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="courses.html" class="nav-link">Courses</a></li>
                 <li><a href="about.html" class="nav-link">About Us</a></li>
