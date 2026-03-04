@@ -14,6 +14,12 @@
     <div id="header-placeholder"></div>
 
     <main id="main-content">
+    <!-- Page Hero -->
+    <div class="hero">
+        <h1>Get In Touch</h1>
+        <p>Apply now, ask us anything, or schedule a free counseling session</p>
+    </div>
+
     <!-- Contact Section -->
     <section>
         <div class="container">
@@ -25,17 +31,17 @@
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="course">Interested In *</label>
                             <select id="course" name="course" required>
@@ -47,55 +53,71 @@
                                 <option value="other">General Inquiry</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="background">Educational Background</label>
                             <input type="text" id="background" name="background" placeholder="e.g., BTech CS, BSc Mathematics, etc.">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" placeholder="Tell us about your goals and any questions you have..."></textarea>
                         </div>
-                        
+
                         <button type="submit" class="submit-btn">Submit Application</button>
                     </form>
                 </div>
-                
+
                 <div class="contact-info">
                     <h2>Get In Touch</h2>
-                    
+
                     <div class="contact-item">
-                        <div class="contact-icon">📧</div>
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Email</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dab9bba8bfbfa8b9a8bbbcae9abdb7bbb3b6f4b9b5b7">[email&#160;protected]</a></p>
+                            <p>hello@upnext.in</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
-                        <div class="contact-icon">📱</div>
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17.2z"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>+91 989 523 451</p>
+                            <p>+91 989 523 4510</p>
                             <p style="font-size: 0.9rem; color: var(--text-light);">Available 9 AM - 6 PM</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Office Address</h4>
                             <p>upNext<br>
                             3C Vimson Serene<br>
-                            Opposite St.Thomas College<br>
-                            Thrissur 695 001<br>
+                            Opposite St. Thomas College<br>
+                            Thrissur 680 001<br>
                             Kerala, India</p>
                         </div>
                     </div>
-                    
+
                     <div class="contact-item">
-                        <div class="contact-icon">⏰</div>
+                        <div class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
                         <div>
                             <h4>Office Hours</h4>
                             <p>Monday - Saturday<br>9:00 AM - 6:00 PM</p>
@@ -107,31 +129,47 @@
         </div>
     </section>
 
-    <!-- Quick Links -->
+    <!-- Quick Actions -->
     <section style="background: var(--light-bg);">
         <div class="container">
             <h2>Quick Actions</h2>
             <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 <div class="feature-card">
-                    <div class="feature-icon">📚</div>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </span>
                     <h3>View Programs</h3>
-                    <a href="courses.html" style="color: var(--emerald-deep); text-decoration: none; font-weight: bold;">Browse Courses →</a>
+                    <a href="courses.html" style="color: var(--emerald-deep); text-decoration: none; font-weight: bold;">Browse Courses &rarr;</a>
                 </div>
-                
+
                 <div class="feature-card">
-                    <div class="feature-icon">📅</div>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </span>
                     <h3>Schedule Call</h3>
                     <p style="margin-top: 0.5rem;">Call us to book a counseling session</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <div class="feature-icon">💬</div>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </span>
                     <h3>Chat with Us</h3>
                     <p style="margin-top: 0.5rem;">Fill the form for quick response</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <div class="feature-icon">🏫</div>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </span>
                     <h3>Visit Campus</h3>
                     <p style="margin-top: 0.5rem;">Drop by during office hours</p>
                 </div>
@@ -148,22 +186,22 @@
                     <h4 style="color: var(--emerald-deep); margin-bottom: 0.5rem;">What is the admission process?</h4>
                     <p>Simply fill out the contact form or call us. We'll schedule a counseling session to understand your goals and recommend the right program.</p>
                 </div>
-                
+
                 <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 0.75rem; border: 1px solid var(--border);">
                     <h4 style="color: var(--emerald-deep); margin-bottom: 0.5rem;">Do I need prior programming experience?</h4>
                     <p>Not for beginner programs. Our Python + Data Analytics course is designed for complete beginners. Advanced programs require basic programming knowledge.</p>
                 </div>
-                
+
                 <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 0.75rem; border: 1px solid var(--border);">
                     <h4 style="color: var(--emerald-deep); margin-bottom: 0.5rem;">Are online classes available?</h4>
                     <p>Yes! We offer both offline classes in Thrissur and live online options for all our programs.</p>
                 </div>
-                
+
                 <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 0.75rem; border: 1px solid var(--border);">
                     <h4 style="color: var(--emerald-deep); margin-bottom: 0.5rem;">What is the batch size?</h4>
                     <p>We maintain small batch sizes (typically 10-15 students) to ensure personalized attention and mentoring.</p>
                 </div>
-                
+
                 <div style="background: var(--light-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 0.75rem; border: 1px solid var(--border);">
                     <h4 style="color: var(--emerald-deep); margin-bottom: 0.5rem;">Is placement assistance provided?</h4>
                     <p>We provide comprehensive career preparation including resume building, interview prep, and portfolio development. We help you become job-ready.</p>
@@ -178,11 +216,19 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        // Initialize form handling
         document.addEventListener('DOMContentLoaded', () => {
             window.appUtils.handleFormSubmit('contactForm', 'Thank you for your interest! We will contact you within 24 hours.');
-            
+
             // Pre-select course if coming from URL parameter
-            const
+            const urlParams = new URLSearchParams(window.location.search);
+            const courseParam = urlParams.get('course') || urlParams.get('type');
+            if (courseParam) {
+                const courseSelect = document.getElementById('course');
+                if (courseSelect) courseSelect.value = courseParam;
+            }
+        });
+    </script>
+</body>
+</html>

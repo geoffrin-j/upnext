@@ -204,6 +204,8 @@ function initScrollAnimations() {
         '.circle-item',
         '.about-text',
         '.about-highlights',
+        '.stat-item',
+        '.step-item',
         'section h2',
         '.section-subtitle',
     ];
@@ -218,7 +220,7 @@ function initScrollAnimations() {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     SELECTORS.forEach(sel => {
-        document.querySelectorAll(sel).forEach((el, i) => {
+        document.querySelectorAll(sel).forEach((el) => {
             // stagger siblings within the same parent
             const siblings = el.parentElement
                 ? Array.from(el.parentElement.querySelectorAll(sel))
@@ -262,31 +264,99 @@ function initCardTilt() {
     }
 }
 
-// ─── Cursor Spotlight ─────────────────────────────────────────
-function initCursorGlow() {
-    const glow = document.getElementById('cursorGlow');
-    if (!glow) return;
-
-    // Dark-background sections where the glow is visible
-    const DARK_SELECTORS = ['.promo-slider', '.tagline-ticker', 'section[style*="bg-darkest"]',
-                             '.circle-highlights-section'];
-
-    let visible = false;
-
-    function isOverDark(x, y) {
-        const el = document.elementFromPoint(x, y);
-        if (!el) return false;
-        return el.closest('.promo-slider, .tagline-ticker, .circle-highlights-section, [style*="bg-darkest"]') !== null;
+// ─── Custom Cursor (dot + ring) ───────────────────────────────
+function initCursor() {
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    if (!dot || !ring) return;
+    if (!window.matchMedia('(pointer: fine)').matches) {
+        dot.style.display  = 'none';
+        ring.style.display = 'none';
+        return;
     }
 
-    document.addEventListener('mousemove', (e) => {
-        glow.style.left = e.clientX + 'px';
-        glow.style.top  = e.clientY + 'px';
-        const dark = isOverDark(e.clientX, e.clientY);
-        glow.style.opacity = dark ? '1' : '0';
+    let mx = 0, my = 0, rx = 0, ry = 0, ringScale = 1;
+
+    document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
     });
 
-    document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+    (function animRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px) scale(${ringScale})`;
+        requestAnimationFrame(animRing);
+    })();
+
+    document.addEventListener('mouseover', e => {
+        if (e.target.closest('a, button, .course-card, .feature-card, .circle-item, .step-item')) {
+            ringScale = 1.7;
+            ring.style.borderColor = 'rgba(110,231,183,0.75)';
+        }
+    });
+
+    document.addEventListener('mouseout', e => {
+        if (e.target.closest('a, button, .course-card, .feature-card, .circle-item, .step-item')) {
+            ringScale = 1;
+            ring.style.borderColor = 'rgba(110,231,183,0.45)';
+        }
+    });
+
+    document.addEventListener('mouseleave', () => {
+        dot.style.opacity = '0'; ring.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+        dot.style.opacity = '1'; ring.style.opacity = '1';
+    });
+}
+
+// ─── Animated Counters ────────────────────────────────────────
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    if (!counters.length) return;
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target  = parseFloat(el.dataset.count);
+            const suffix  = el.dataset.suffix || '';
+            const decimal = parseInt(el.dataset.decimal) || 0;
+            const duration = 1600;
+            const start = performance.now();
+
+            function tick(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased    = 1 - Math.pow(1 - progress, 3);
+                const val      = target * eased;
+                el.textContent = (decimal ? val.toFixed(decimal) : Math.floor(val)) + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+            obs.unobserve(el);
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => obs.observe(el));
+}
+
+// ─── Animated Progress Bars ───────────────────────────────────
+function initProgressBars() {
+    const containers = document.querySelectorAll('.stats-progress');
+    if (!containers.length) return;
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.querySelectorAll('.progress-fill[data-w]').forEach(bar => {
+                bar.style.width = bar.dataset.w + '%';
+            });
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.3 });
+
+    containers.forEach(el => obs.observe(el));
 }
 
 // ─── Hero Particles ───────────────────────────────────────────
@@ -423,15 +493,37 @@ function initPromoSlider() {
     start();
 }
 
+// ─── WhatsApp Floating Button ─────────────────────────────────
+function initWhatsApp() {
+    const msg = encodeURIComponent("Hi upNext, I'd like to know more about your programs.");
+    const a = document.createElement('a');
+    a.href = `https://wa.me/919895234510?text=${msg}`;
+    a.className = 'wa-fab';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', 'Chat with us on WhatsApp');
+    a.innerHTML = `
+        <span class="wa-fab-pulse" aria-hidden="true"></span>
+        <span class="wa-fab-tip">Chat on WhatsApp</span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+    `;
+    document.body.appendChild(a);
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     loadComponents();
     setTimeout(initScrollAnimations, 100);
     initPromoSlider();
     initCardTilt();
-    initCursorGlow();
+    initCursor();
+    initCounters();
+    initProgressBars();
     initHeroParticles();
     startTypewriter();
+    initWhatsApp();
 });
 
 // Utility function to get URL parameters

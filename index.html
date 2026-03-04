@@ -14,18 +14,22 @@
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
-    <!-- Cursor glow -->
-    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    <!-- Custom cursor -->
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
 
     <!-- Screen reader live region for slider -->
     <div id="sliderStatus" aria-live="polite" aria-atomic="true" class="sr-only"></div>
 
     <!-- Promo Banner Slider -->
     <div class="promo-slider" id="promoBanner" role="region" aria-label="Program highlights" aria-roledescription="carousel">
+        <div class="hero-orb hero-orb1" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb2" aria-hidden="true"></div>
         <canvas id="heroCanvas" aria-hidden="true"></canvas>
 
         <!-- Left: fixed content panel — JS updates this on each slide change -->
         <div class="promo-left-panel" id="heroLeft">
+            <div class="hero-badge"><span class="badge-pulse"></span> Now Enrolling — 2025 Batch</div>
             <p class="promo-label" id="heroLabel">upNext</p>
             <p class="hero-accent" id="heroAccent"><em>UP</em> now. you are <em>NEXT.</em></p>
             <h1 id="heroHeading">Building <span id="typedHero" class="typed-span"></span><br>Empowering Futures.</h1>
@@ -58,6 +62,40 @@
             </div>
             <div class="promo-slide">
                 <img src="images/course-data-science2.jpg" alt="Python &amp; Analytics">
+            </div>
+        </div>
+
+        <!-- Hero stat deco cards -->
+        <div class="hero-deco-cards" aria-hidden="true">
+            <div class="hero-deco-card">
+                <span class="hdc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </span>
+                <span class="hdc-num">25+</span>
+                <span class="hdc-label">Tools</span>
+            </div>
+            <div class="hero-deco-card">
+                <span class="hdc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                        <polyline points="2 17 12 22 22 17"/>
+                        <polyline points="2 12 12 17 22 12"/>
+                    </svg>
+                </span>
+                <span class="hdc-num">12+</span>
+                <span class="hdc-label">Projects</span>
+            </div>
+            <div class="hero-deco-card">
+                <span class="hdc-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </span>
+                <span class="hdc-num">3</span>
+                <span class="hdc-label">Programs</span>
             </div>
         </div>
 
@@ -113,18 +151,88 @@
 
                 <div class="about-highlights">
                     <div class="highlight-item">
-                        <h4>🎯 Our Vision</h4>
+                        <div class="highlight-header">
+                            <span class="highlight-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                                </svg>
+                            </span>
+                            <h4>Our Vision</h4>
+                        </div>
                         <p>To become a leading center of excellence in Applied Artificial Intelligence and Data Science, preparing students for the future of intelligent technologies.</p>
                     </div>
-                    
+
                     <div class="highlight-item">
-                        <h4>🚀 Our Mission</h4>
+                        <div class="highlight-header">
+                            <span class="highlight-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                                </svg>
+                            </span>
+                            <h4>Our Mission</h4>
+                        </div>
                         <p>Deliver high-quality, practical AI education that bridges the gap between academics and industry, equipping students with real-world problem-solving skills while promoting ethical and responsible AI practices.</p>
                     </div>
-                    
+
                     <div class="highlight-item">
-                        <h4>💡 Our Promise</h4>
+                        <div class="highlight-header">
+                            <span class="highlight-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+                                </svg>
+                            </span>
+                            <h4>Our Promise</h4>
+                        </div>
                         <p>We don't just train students — we transform them into professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats & Progress Bars -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-inner">
+                <div class="stats-grid">
+                    <div class="stat-item reveal">
+                        <span class="stat-number" data-count="3" data-suffix="">3</span>
+                        <span class="stat-desc">Specialised Programs</span>
+                    </div>
+                    <div class="stat-item reveal">
+                        <span class="stat-number" data-count="25" data-suffix="+">25+</span>
+                        <span class="stat-desc">Tools & Frameworks</span>
+                    </div>
+                    <div class="stat-item reveal">
+                        <span class="stat-number" data-count="12" data-suffix="+">12+</span>
+                        <span class="stat-desc">Live Projects</span>
+                    </div>
+                    <div class="stat-item reveal">
+                        <span class="stat-number" data-count="70" data-suffix="%">70%</span>
+                        <span class="stat-desc">Practical Training</span>
+                    </div>
+                </div>
+                <div class="stats-progress reveal">
+                    <div>
+                        <div class="progress-row-head">
+                            <span class="progress-row-label">Practical Lab Sessions</span>
+                            <span class="progress-row-pct">70%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" data-w="70"></div></div>
+                    </div>
+                    <div>
+                        <div class="progress-row-head">
+                            <span class="progress-row-label">Industry Tool Coverage</span>
+                            <span class="progress-row-pct">90%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" data-w="90"></div></div>
+                    </div>
+                    <div>
+                        <div class="progress-row-head">
+                            <span class="progress-row-label">Project-Based Assessment</span>
+                            <span class="progress-row-pct">80%</span>
+                        </div>
+                        <div class="progress-track"><div class="progress-fill" data-w="80"></div></div>
                     </div>
                 </div>
             </div>
@@ -133,6 +241,7 @@
 
     <!-- Why Choose Us Section -->
     <section class="circle-highlights-section">
+        <div class="section-orb section-orb-teal" style="width:300px;height:300px;top:-60px;right:5%;" aria-hidden="true"></div>
         <div class="container">
             <div class="circle-highlights">
                 <div class="circle-item">
@@ -196,32 +305,68 @@
 
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>📚 Concept Clarity Sessions</h3>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </span>
+                    <h3>Concept Clarity Sessions</h3>
                     <p>Strong theoretical foundation before hands-on practice</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <h3>🔬 Guided Hands-on Labs</h3>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 3h6m-5 0v6l-4 7a1 1 0 0 0 .89 1.45h10.22A1 1 0 0 0 18 16l-4-7V3"/>
+                            <line x1="7.5" y1="13" x2="16.5" y2="13"/>
+                        </svg>
+                    </span>
+                    <h3>Guided Hands-on Labs</h3>
                     <p>Practical sessions with real datasets and tools</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <h3>📊 Real Case Studies</h3>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                    </span>
+                    <h3>Real Case Studies</h3>
                     <p>Industry scenarios and business problems</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <h3>📝 Weekly Assignments</h3>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                            <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/>
+                        </svg>
+                    </span>
+                    <h3>Weekly Assignments</h3>
                     <p>Regular practice to reinforce learning</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <h3>🎯 Mini Projects</h3>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
+                        </svg>
+                    </span>
+                    <h3>Mini Projects</h3>
                     <p>Build multiple projects throughout the course</p>
                 </div>
-                
+
                 <div class="feature-card">
-                    <h3>🏆 Capstone Project</h3>
+                    <span class="feature-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="6"/>
+                            <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+                        </svg>
+                    </span>
+                    <h3>Capstone Project</h3>
                     <p>Final portfolio-worthy project for your resume</p>
                 </div>
             </div>
@@ -230,8 +375,41 @@
         </div>
     </section>
 
+    <!-- Your Journey (Steps) -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="reveal">Your Journey with upNext</h2>
+            <p class="section-subtitle reveal">From enrollment to your dream career — in 4 clear steps</p>
+            <div class="steps-row">
+                <div class="step-connector" aria-hidden="true"></div>
+                <div class="step-item reveal">
+                    <div class="step-num"><span>01</span></div>
+                    <div class="step-title">Choose Your Program</div>
+                    <div class="step-desc">Pick from our AI, Data Science, or Python Analytics tracks based on your goals.</div>
+                </div>
+                <div class="step-item reveal">
+                    <div class="step-num"><span>02</span></div>
+                    <div class="step-title">Enroll & Get Started</div>
+                    <div class="step-desc">Simple enrollment, flexible plans, and immediate access to resources and mentors.</div>
+                </div>
+                <div class="step-item reveal">
+                    <div class="step-num"><span>03</span></div>
+                    <div class="step-title">Learn with Experts</div>
+                    <div class="step-desc">Attend live classes, guided labs, and weekly mentoring sessions in small batches.</div>
+                </div>
+                <div class="step-item reveal">
+                    <div class="step-num"><span>04</span></div>
+                    <div class="step-title">Build & Get Placed</div>
+                    <div class="step-desc">Complete your capstone project and get dedicated support from our placement team.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section style="background: var(--bg-darkest); color: white; text-align: center; position: relative; overflow: hidden;">
+        <div class="section-orb section-orb-teal" style="width:360px;height:360px;top:-100px;left:-80px;" aria-hidden="true"></div>
+        <div class="section-orb section-orb-blue" style="width:280px;height:280px;bottom:-60px;right:5%;" aria-hidden="true"></div>
         <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(110,231,183,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(110,231,183,0.04) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none;"></div>
         <div class="container" style="position: relative; z-index: 1;">
             <h2 style="color: white; letter-spacing: -0.045em;">Ready to Transform Your Career?</h2>
