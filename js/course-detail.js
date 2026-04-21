@@ -19,9 +19,10 @@ async function loadCourseDetails() {
         displayCourseHero(course);
         displayCourseMain(course);
         displayCourseSidebar(course);
-        
-        // Update page title
-        document.title = `${course.title} - upNext`;
+
+        // Update page title and SEO
+        document.title = `${course.title} — upNext`;
+        updateCourseSEO(course, courseId);
     } catch (error) {
         console.error('Error loading course details:', error);
     }
@@ -42,7 +43,6 @@ function displayCourseHero(course) {
                     </div>
                     <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
                         <a href="contact.html" class="cta-button">Apply Now</a>
-                        <a href="contact.html?type=counseling" class="cta-button cta-outline">Book Counseling</a>
                     </div>
                 </div>
                 ${course.image ? `
@@ -59,7 +59,33 @@ function displayCourseMain(course) {
     const mainSection = document.getElementById('courseMain');
     
     let modulesHTML = '';
-    if (course.modules && course.modules.length > 0) {
+
+    // Coding course uses "tracks" instead of "modules"
+    if (course.tracks && course.tracks.length > 0) {
+        modulesHTML = `
+            <h2>Choose Your Coding Track</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Pick the language that excites you. Each track is taught by expert mentors with hands-on projects.</p>
+            ${course.tracks.map(track => `
+                <div class="module">
+                    <h3>${track.track}: ${track.title}</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                        ${track.ageGroup ? `<span style="font-size:0.8rem; padding: 3px 10px; border-radius: 20px; background: rgba(110,231,183,0.1); color: var(--emerald-deep); border: 1px solid rgba(110,231,183,0.2);">👤 ${track.ageGroup}</span>` : ''}
+                        ${track.duration ? `<span style="font-size:0.8rem; padding: 3px 10px; border-radius: 20px; background: rgba(59,130,246,0.1); color: #60A5FA; border: 1px solid rgba(59,130,246,0.2);">⏱ ${track.duration}</span>` : ''}
+                    </div>
+                    ${track.topics && track.topics.length > 0 ? `
+                        <h4>Topics Covered:</h4>
+                        <ul>${track.topics.map(t => `<li>${t}</li>`).join('')}</ul>
+                    ` : ''}
+                    ${track.project ? `<p style="margin-top: 1rem;"><strong>🎯 Project:</strong> ${track.project}</p>` : ''}
+                    ${track.outcome ? `
+                        <p style="margin-top: 1rem; padding: 1rem; background: var(--light-bg); border-radius: 8px;">
+                            <strong>✅ Outcome:</strong> ${track.outcome}
+                        </p>
+                    ` : ''}
+                </div>
+            `).join('')}
+        `;
+    } else if (course.modules && course.modules.length > 0) {
         modulesHTML = `
             <h2>Course Curriculum</h2>
             ${course.modules.map(module => `
@@ -113,7 +139,7 @@ function displayCourseMain(course) {
             `).join('')}
         `;
     }
-    
+
     let capstoneHTML = '';
     if (course.capstoneProjects && course.capstoneProjects.length > 0) {
         capstoneHTML = `
@@ -200,17 +226,75 @@ function displayCourseSidebar(course) {
         <div class="info-box" style="background: var(--gradient); color: white;">
             <h3 style="color: white;">Ready to Apply?</h3>
             <p style="margin-bottom: 1.5rem; color: rgba(255,255,255,0.85);">Limited seats per batch for personalized attention.</p>
-            <a href="contact.html" class="cta-button" style="display: block; text-align: center; margin-bottom: 1rem;">Apply Now</a>
-            <a href="contact.html?type=counseling" class="cta-button" style="display: block; text-align: center;">Book Counseling</a>
+            <a href="contact.html" class="cta-button" style="display: block; text-align: center;">Apply Now</a>
         </div>
         
         <div class="info-box">
             <h3>Need Help?</h3>
-            <p>📧 upnext@gmail.com</p>
-            <p>📱 +91 989 523 451</p>
-            <p style="margin-top: 1rem;">📍 upNext,<br>3C Vimson Serene,<br>Opposite St.Thomas College,<br>Thrissur 695 001</p>
+            <p>📧 contact@upnext.academy</p>
+            <p>📱 +91 8891404057</p>
+            <p>🌐 www.upnext.academy</p>
+            <p style="margin-top: 1rem;">📍 upNext,<br>3rd Floor, Bright Towers,<br>St. Thomas College Road<br>Thrissur, Kerala – 680001</p>
         </div>
     `;
+}
+
+function updateCourseSEO(course, courseId) {
+    const pageUrl = `https://www.upnext.academy/course-detail.html?id=${courseId}`;
+    const desc = `${course.subtitle || course.description || course.title} — Practical, mentor-led training at upNext in Thrissur, Kerala.`;
+
+    // Meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.name = 'description'; document.head.appendChild(metaDesc); }
+    metaDesc.content = desc;
+
+    // Canonical
+    const canonical = document.getElementById('canonicalTag');
+    if (canonical) canonical.href = pageUrl;
+
+    // OG tags
+    const ogUrl   = document.querySelector('meta[property="og:url"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDesc  = document.querySelector('meta[property="og:description"]');
+    if (ogUrl)   ogUrl.content   = pageUrl;
+    if (ogTitle) ogTitle.content = `${course.title} — upNext`;
+    if (ogDesc)  ogDesc.content  = desc;
+
+    // Twitter tags
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    const twDesc  = document.querySelector('meta[name="twitter:description"]');
+    if (twTitle) twTitle.content = `${course.title} — upNext`;
+    if (twDesc)  twDesc.content  = desc;
+
+    // JSON-LD Course schema
+    const jsonLdEl = document.getElementById('courseJsonLd');
+    if (jsonLdEl) {
+        jsonLdEl.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            "name": course.title,
+            "description": desc,
+            "url": pageUrl,
+            "provider": {
+                "@type": "EducationalOrganization",
+                "name": "upNext",
+                "url": "https://www.upnext.academy",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "3rd Floor, Bright Towers, St. Thomas College Road",
+                    "addressLocality": "Thrissur",
+                    "addressRegion": "Kerala",
+                    "postalCode": "680001",
+                    "addressCountry": "IN"
+                }
+            },
+            "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": course.mode || "Blended",
+                "inLanguage": "en"
+            }
+        });
+    }
 }
 
 // Initialize when DOM is loaded

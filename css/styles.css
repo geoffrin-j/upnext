@@ -139,6 +139,7 @@ body {
     background: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding-top: 60px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -221,8 +222,10 @@ header {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -479,6 +482,30 @@ html[data-theme="dark"] nav a.active {
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
+}
+
+.fdp-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.fdp-hero-link:hover { color: var(--emerald); }
+.fdp-hero-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(110,231,183,0.15);
+    color: var(--emerald);
+    border: 1px solid rgba(110,231,183,0.25);
+    padding: 2px 8px;
+    border-radius: 20px;
 }
 
 .promo-dots {
@@ -890,7 +917,7 @@ html[data-theme="dark"] .highlight-icon {
 /* ─── Courses Grid ───────────────────────────────────────────── */
 .courses-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
     gap: 1.75rem;
 }
 
@@ -1003,6 +1030,18 @@ html[data-theme="dark"] .course-body ul li::before {
     background: rgba(110,231,183,0.1);
     color: var(--emerald-deep);
     border: 1px solid rgba(110,231,183,0.2);
+}
+.course-tag-fee {
+    background: rgba(59,130,246,0.12);
+    color: #60A5FA;
+    border-color: rgba(59,130,246,0.25);
+}
+.course-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
 }
 
 html[data-theme="dark"] .course-tag {
@@ -1875,7 +1914,8 @@ html[data-theme="dark"] code {
     .course-sidebar { position: static; }
 
     .courses-grid,
-    .features-grid {
+    .features-grid,
+    .approach-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1968,6 +2008,313 @@ html[data-theme="dark"] code {
         display: flex;
         align-items: center;
     }
+}
+
+/* ─── Boot Camp Registration Modal ──────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-overlay[hidden] { display: none; }
+
+.modal-border-wrap {
+    background: linear-gradient(135deg, #6EE7B7, #38BDF8, #3B82F6);
+    border-radius: 1.35rem;
+    padding: 2px;
+    width: 100%;
+    max-width: 680px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+.modal-box {
+    background: var(--light-card);
+    border-radius: 1.25rem;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    transition: background 0.15s, color 0.15s;
+}
+.modal-close:hover { background: var(--border); color: var(--text-dark); }
+
+.modal-header { display: block; margin-bottom: 1.5rem; padding: 0 0 1rem; border-bottom: 1px solid var(--border); text-align: center; }
+.modal-header h2 { font-size: 1.4rem; margin-bottom: 0.25rem; color: var(--text-dark); }
+.modal-header p { font-size: 0.875rem; color: var(--text-light); }
+
+.form-section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--emerald-deep);
+    margin: 1.5rem 0 0.75rem;
+}
+html[data-theme="dark"] .form-section-label {
+    color: var(--emerald);
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+@media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+.bootcamp-form .form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.5rem; }
+.bootcamp-form label { font-size: 0.85rem; font-weight: 500; color: var(--text-dark); }
+.optional { font-weight: 400; color: var(--text-light); }
+.req { color: #f87171; }
+
+.bootcamp-form input[type="text"],
+.bootcamp-form input[type="tel"],
+.bootcamp-form input[type="email"],
+.bootcamp-form input[type="date"],
+.bootcamp-form select {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    width: 100%;
+    transition: border-color 0.2s;
+    font-family: inherit;
+    color-scheme: light dark;
+}
+.bootcamp-form input:focus,
+.bootcamp-form select:focus {
+    outline: none;
+    border-color: var(--emerald);
+}
+.bootcamp-form .input-error { border-color: #f87171 !important; }
+.phone-input-group { display: flex; gap: 0.5rem; }
+.phone-input-group select { flex: 0 0 auto; width: auto; }
+.phone-input-group input { flex: 1; }
+.bootcamp-form .field-error {
+    font-size: 0.78rem;
+    color: #f87171;
+    margin-top: 0.2rem;
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+.form-check input[type="checkbox"] { margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--emerald); }
+.form-check label { font-size: 0.85rem; color: var(--text-dark); line-height: 1.5; }
+
+.modal-submit-row { margin-top: 1.5rem; }
+.modal-submit-btn {
+    width: 100%;
+    padding: 0.85rem;
+    background: linear-gradient(90deg, #6EE7B7, #38BDF8, #3B82F6);
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.modal-submit-btn:hover { opacity: 0.88; }
+.modal-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.bc-fee-note {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border-left: 3px solid;
+}
+.bc-fee-own {
+    background: rgba(110,231,183,0.1);
+    border-color: #6EE7B7;
+    color: #6EE7B7;
+}
+.bc-fee-provided {
+    background: rgba(251,191,36,0.1);
+    border-color: #FBBF24;
+    color: #FBBF24;
+}
+.bc-fee-unsure {
+    background: rgba(148,163,184,0.1);
+    border-color: #94A3B8;
+    color: #94A3B8;
+}
+
+.modal-success[hidden] { display: none !important; }
+.modal-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    gap: 1rem;
+}
+.modal-success-icon {
+    animation: successPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes successPop {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+}
+.modal-success-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #6EE7B7 0%, #38BDF8 60%, #3B82F6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.modal-success-msg {
+    color: #CBD5E1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 320px;
+}
+.modal-success-msg strong {
+    color: #e2eaf4;
+}
+.modal-success-sub {
+    font-size: 0.8rem;
+    color: rgba(110,231,183,0.55);
+}
+.success-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+.wa-group-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    background: #25D366;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+.wa-group-btn:hover { opacity: 0.88; }
+.success-close-btn {
+    padding: 0.65rem 1.4rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.success-close-btn:hover { background: var(--border); color: var(--text-dark); }
+
+/* ─── Announcement Bar ───────────────────────────────────────── */
+.announcement-bar {
+    position: relative;
+    background: linear-gradient(90deg, #6EE7B7, #38BDF8, #3B82F6);
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.65rem 3rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    z-index: 900;
+}
+
+.announcement-bar.hidden {
+    display: none;
+}
+
+.announcement-inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.announcement-tag {
+    background: rgba(0,0,0,0.15);
+    color: #0f172a;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.announcement-text {
+    color: #0f172a;
+}
+
+.announcement-cta {
+    background: #0f172a;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+
+.announcement-cta:hover {
+    opacity: 0.85;
+}
+
+.announcement-close {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(15,23,42,0.5);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.announcement-close:hover {
+    color: #0f172a;
 }
 
 /* ─── Hero Badge ─────────────────────────────────────────────── */
@@ -2322,26 +2669,6 @@ html[data-theme="dark"] .feature-card:hover {
                 0 4px 24px var(--glow-emerald);
 }
 
-/* ─── Mobile course horizontal scroll ───────────────────────── */
-@media (max-width: 640px) {
-    .courses-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        gap: 1rem;
-        padding-bottom: 1rem;
-        grid-template-columns: unset;
-    }
-
-    .courses-grid::-webkit-scrollbar { display: none; }
-
-    .courses-grid .course-card {
-        min-width: 280px;
-        flex-shrink: 0;
-        scroll-snap-align: start;
-    }
-}
 
 /* ─── Learning Approach Cards ────────────────────────────────── */
 .approach-grid {
@@ -2597,4 +2924,53 @@ html[data-theme="dark"] .faq-item h4 { color: var(--emerald); }
     border: 1px solid rgba(110,231,183,0.15);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+}
+
+/* ─── Touch devices: bake hover effects in permanently ───────── */
+@media (hover: none) and (pointer: coarse) {
+    /* Feature cards — show gradient top bar and border highlight */
+    .feature-card::before { opacity: 0.7; }
+    .feature-card {
+        border-color: rgba(110,231,183,0.22);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .feature-card .feature-icon {
+        background: rgba(110,231,183,0.18);
+    }
+    .feature-card:active {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1), 0 4px 16px var(--glow-emerald);
+    }
+
+    /* Approach cards — show border (was transparent) and shadow */
+    .approach-card {
+        border-color: rgba(110,231,183,0.22);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+    .approach-card:active {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    /* Highlight / mission cards — show glow shadow */
+    .highlight-item {
+        box-shadow: 0 4px 18px var(--glow-emerald);
+        border-color: rgba(110,231,183,0.28);
+    }
+    .highlight-item:active { transform: translateY(-2px); }
+
+    /* Course cards */
+    .course-card {
+        border-color: rgba(110,231,183,0.22);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    .course-card:active {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1), 0 0 0 1px var(--emerald-deep);
+    }
+
+    /* FAQ items */
+    .faq-item {
+        border-color: rgba(110,231,183,0.2);
+    }
 }

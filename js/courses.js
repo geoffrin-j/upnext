@@ -23,6 +23,7 @@ async function displayCourses() {
                 </div>
                 `}
                 <div class="course-body">
+                    <h3 class="course-card-title">${course.title}</h3>
                     <div class="course-tags">
                         <span class="course-tag">${course.duration}</span>
                         <span class="course-tag">${course.level}</span>
@@ -30,7 +31,7 @@ async function displayCourses() {
                     </div>
                     <p>${course.shortDescription}</p>
                     <ul>
-                        ${course.highlights.slice(0, 4).map(highlight => `
+                        ${course.highlights.slice(4).map(highlight => `
                             <li>${highlight}</li>
                         `).join('')}
                     </ul>

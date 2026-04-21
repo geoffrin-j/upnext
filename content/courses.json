@@ -4,20 +4,21 @@
       "id": "data-science",
       "image": "images/course-data-science.jpg",
       "title": "Data Science & Machine Learning",
-      "subtitle": "Professional Certification Program",
-      "duration": "6 Months",
+      "subtitle": "Professional Training Program",
+      "duration": "6 Months (incl. Internship)",
+      "fee": "₹50,000",
       "level": "Professional",
-      "mode": "Offline (Thrissur) | Live Online",
-      "shortDescription": "Launch your career in AI & Data Science. Build in-demand skills, work on real projects, and become job-ready.",
+      "mode": "Offline | Live Online",
+      "shortDescription": "A comprehensive 6-month program covering Data Science, Machine Learning and a real-world internship to make you fully job-ready.",
       "highlights": [
-        "60% Practical Training",
-        "Real-world Datasets",
+        "IBM Certification",
+        "Course Completion Certificate",
+        "100% Placement Assistance",
+        "Hands-on Practical Training",
+        "Real-world Internship Included",
         "3+ Industry-Level Projects",
-        "Capstone Project",
         "Resume & Interview Preparation",
-        "GitHub Portfolio Building",
-        "Personalized Mentorship",
-        "Small batch size for focused learning"
+        "Small batch for focused learning"
       ],
       "modules": [
         {
@@ -58,14 +59,14 @@
         },
         {
           "phase": "Phase 4",
-          "title": "Model Deployment",
+          "title": "Model Deployment & Internship",
           "topics": [
             "Git & GitHub",
             "ML model deployment",
             "API basics",
-            "Deployment workflow overview"
+            "Real-world Internship Project"
           ],
-          "description": "Make your models usable in real world."
+          "description": "Apply your skills in a real-world setting."
         }
       ],
       "careerOpportunities": [
@@ -84,277 +85,310 @@
       ]
     },
     {
-      "id": "ai-genai",
+      "id": "data-analytics",
       "image": "images/course-ai-genai.jpg",
-      "title": "AI & Generative AI",
-      "subtitle": "Professional Certification Program",
-      "duration": "3-4 Months",
-      "level": "Career-Oriented",
-      "mode": "Offline (Thrissur) | Live Online",
-      "shortDescription": "Master Artificial Intelligence & Build Real Generative AI Applications using modern tools, models, and APIs.",
+      "title": "Data Analytics",
+      "subtitle": "Professional Training Program",
+      "duration": "3 Months",
+      "fee": "₹30,000",
+      "level": "Intermediate",
+      "mode": "Offline | Live Online",
+      "shortDescription": "Master the art of turning raw data into business insights. Learn tools, techniques and analytics workflows used in the industry.",
       "highlights": [
-        "Generative AI & LLM-focused curriculum",
-        "70% hands-on practical learning",
-        "Real AI tools & APIs",
-        "Industry-relevant projects",
-        "Capstone Generative AI application",
-        "Small batch, personalized mentoring"
+        "IBM Certification",
+        "Course Completion Certificate",
+        "100% Placement Assistance",
+        "Hands-on Practical Training",
+        "Real Business Datasets",
+        "Industry-relevant Projects",
+        "Excel, SQL & Python for Analytics",
+        "Data Visualization & Dashboards"
       ],
       "modules": [
         {
           "phase": "Phase 1",
-          "title": "Foundations of Artificial Intelligence",
+          "title": "Foundations of Data Analytics",
           "topics": [
-            "Introduction to AI",
-            "AI vs ML vs Deep Learning",
-            "Evolution and applications of AI",
-            "AI workflow and lifecycle",
-            "Ethical AI & responsible usage"
+            "Introduction to Data Analytics",
+            "Types of Analytics",
+            "Python for Data Analysis",
+            "NumPy & Pandas",
+            "Data Cleaning & Preprocessing"
           ],
-          "description": "Understand how AI actually works before building anything."
+          "description": "Understand data and how to work with it."
         },
         {
           "phase": "Phase 2",
-          "title": "Python for AI & Data Handling",
+          "title": "Data Visualization & Insights",
           "topics": [
-            "Python refresher for AI",
-            "NumPy & Pandas fundamentals",
-            "Working with datasets",
-            "Data preprocessing techniques",
-            "Feature engineering basics",
-            "Visualization fundamentals"
+            "Data Visualization with Matplotlib & Seaborn",
+            "Business Storytelling with Data",
+            "Excel & Pivot Tables",
+            "Dashboard Design Basics",
+            "Exploratory Data Analysis (EDA)"
           ],
-          "description": "Mini Assignment: Dataset analysis & preprocessing."
+          "description": "Mini Project: Business insight report."
         },
         {
           "phase": "Phase 3",
-          "title": "Machine Learning Essentials",
+          "title": "SQL & Business Analytics",
           "topics": [
-            "Supervised & unsupervised learning",
-            "Linear & logistic regression",
-            "Decision trees & random forest",
-            "Clustering techniques",
-            "Model evaluation metrics",
-            "Overfitting & underfitting"
+            "SQL Fundamentals",
+            "Querying Databases",
+            "Joins, Aggregations & Subqueries",
+            "KPI Tracking",
+            "Business Case Studies"
           ],
-          "description": "Mini Project: AI-based prediction system."
+          "description": "Work with real business databases."
         },
         {
           "phase": "Phase 4",
-          "title": "Deep Learning Fundamentals",
+          "title": "Capstone Project & Placement Prep",
           "topics": [
-            "Neural networks & perceptron",
-            "Activation & loss functions",
-            "Backpropagation",
-            "Introduction to TensorFlow / PyTorch",
-            "Building basic neural networks",
-            "Image classification basics"
+            "End-to-end Analytics Project",
+            "Insight Presentation",
+            "Resume Building",
+            "Interview Preparation"
           ],
-          "description": "Learn how modern AI models are built."
-        },
-        {
-          "phase": "Phase 5",
-          "title": "Natural Language Processing (NLP)",
-          "topics": [
-            "Text preprocessing",
-            "Tokenization & vectorization",
-            "Word embeddings",
-            "Introduction to transformers",
-            "GPT & BERT concepts"
-          ],
-          "description": "Mini Project: Sentiment analysis or text classification model."
-        },
-        {
-          "phase": "Phase 6",
-          "title": "Generative AI & Large Language Models",
-          "topics": [
-            "What is Generative AI?",
-            "Introduction to GANs (conceptual)",
-            "Large Language Models (LLMs)",
-            "Transformer architecture overview",
-            "GPT models & working principles",
-            "Prompt engineering (advanced techniques)",
-            "Zero-shot & few-shot prompting",
-            "Fine-tuning concepts",
-            "Introduction to RAG",
-            "AI agents (conceptual overview)",
-            "Using OpenAI APIs",
-            "Building AI chatbots",
-            "Text & content generation",
-            "AI automation workflows"
-          ],
-          "description": "The heart of the program - hands-on with real AI tools."
-        },
-        {
-          "phase": "Phase 7",
-          "title": "AI Application Development & Deployment",
-          "topics": [
-            "Building AI-powered applications",
-            "Streamlit for AI apps",
-            "API integration",
-            "Version control using Git & GitHub",
-            "Deployment workflow basics",
-            "Responsible AI practices"
-          ],
-          "description": "Mini Project: Deploy a Generative AI application."
+          "description": "Build a complete analytics portfolio project."
         }
       ],
-      "capstoneProjects": [
-        "AI Resume Builder",
-        "AI Study Assistant",
-        "AI Business Content Generator",
-        "AI Research Assistant",
-        "AI Customer Support Bot",
-        "AI Document Summarizer"
-      ],
       "careerOpportunities": [
-        "AI Developer (Entry Level)",
-        "Generative AI Engineer (Junior)",
-        "NLP Engineer (Entry Level)",
-        "AI Application Developer",
-        "AI Product Associate"
+        "Data Analyst",
+        "Business Analyst",
+        "Reporting Analyst",
+        "Operations Analyst",
+        "Market Research Analyst"
       ],
       "eligibility": [
-        "Final-year students",
-        "Fresh graduates",
-        "Engineering / Science / BCA / BSc students",
-        "Students interested in AI, ML, and future technologies",
-        "Basic programming or Python knowledge helpful but not mandatory"
+        "Final Year Students",
+        "Fresh Graduates",
+        "Working Professionals looking to upskill",
+        "Any stream — Science, Commerce, Arts",
+        "No prior coding knowledge needed"
       ]
     },
     {
       "id": "python-analytics",
       "image": "images/course-python-analytics.jpg",
-      "title": "Python + Data Analytics",
-      "subtitle": "Beginner Professional Program",
-      "duration": "2 Months (8 Weeks)",
+      "title": "Python with AI",
+      "subtitle": "Professional Training Program",
+      "duration": "2 Months",
+      "fee": "₹10,000",
       "level": "Beginner",
-      "mode": "Offline (Thrissur) + Live Online",
-      "shortDescription": "Perfect starting point for students new to programming and data. No coding background required.",
+      "mode": "Offline | Live Online",
+      "shortDescription": "Perfect starting point — learn Python programming and explore how AI works, with no prior coding experience required.",
       "highlights": [
-        "No coding experience required",
-        "Hands-on Python programming",
-        "Real business datasets",
-        "Data visualization skills",
-        "Excel for business analytics",
-        "Final analytics project"
+        "IBM Certification",
+        "Course Completion Certificate",
+        "100% Placement Assistance",
+        "Hands-on Practical Training",
+        "No Coding Experience Required",
+        "Python from Scratch",
+        "Introduction to AI & Automation",
+        "Real mini-projects"
       ],
       "modules": [
         {
           "phase": "Module 1",
-          "title": "Introduction to Programming with Python",
-          "duration": "Weeks 1-2",
+          "title": "Python Programming Fundamentals",
+          "duration": "Weeks 1–2",
           "topics": [
             "Introduction to Programming",
-            "What is Python? Why Python for Data?",
-            "Installing Python & Jupyter Notebook",
-            "Variables and Data Types",
-            "Operators",
-            "Conditional Statements",
-            "Loops (for, while)",
-            "Functions",
-            "Basic Problem Solving",
-            "Lists, Tuples, Dictionaries"
+            "Python Basics — Variables, Data Types, Operators",
+            "Conditional Statements & Loops",
+            "Functions & Modules",
+            "Lists, Tuples, Dictionaries",
+            "Basic Problem Solving"
           ],
-          "practical": [
-            "Basic coding exercises",
-            "Mini problem-solving tasks",
-            "Simple automation examples"
-          ],
-          "outcome": "Students gain coding confidence."
+          "outcome": "Students gain coding confidence from scratch."
         },
         {
           "phase": "Module 2",
-          "title": "Working with Data Using Python",
-          "duration": "Weeks 3-4",
+          "title": "Data Handling with Python",
+          "duration": "Weeks 3–4",
           "topics": [
-            "Introduction to datasets",
-            "Reading CSV & Excel files",
-            "DataFrames & Series",
-            "Data selection & filtering",
-            "Sorting & grouping",
-            "Handling missing values",
-            "Data cleaning basics",
-            "Basic data transformation"
+            "Introduction to Pandas & NumPy",
+            "Reading CSV & Excel Files",
+            "Data Cleaning & Filtering",
+            "Sorting & Grouping Data",
+            "Basic Data Visualization"
           ],
-          "practical": [
-            "Cleaning a real dataset",
-            "Sales data analysis task"
-          ],
-          "assignment": "Analyze a small business dataset and extract insights.",
-          "outcome": "Students understand how to manipulate structured data."
+          "outcome": "Students can work with real datasets."
         },
         {
           "phase": "Module 3",
-          "title": "Data Visualization & Business Insights",
-          "duration": "Weeks 5-6",
+          "title": "Introduction to Artificial Intelligence",
+          "duration": "Weeks 5–6",
           "topics": [
-            "Importance of data visualization",
-            "Bar charts",
-            "Line graphs",
-            "Pie charts",
-            "Histograms",
-            "Boxplots",
-            "Understanding trends and patterns",
-            "Business storytelling with data"
+            "What is AI? How does it work?",
+            "AI vs ML vs Deep Learning",
+            "Introduction to Machine Learning",
+            "Building a simple ML model",
+            "AI tools & real-world applications"
           ],
-          "practical": [
-            "Visualizing sales trends",
-            "Customer behavior analysis"
-          ],
-          "project": "Create a visual report for a business dataset.",
-          "outcome": "Students can turn raw data into meaningful visuals."
+          "outcome": "Students understand and use AI concepts practically."
         },
         {
           "phase": "Module 4",
-          "title": "Excel & Business Analytics Basics",
-          "duration": "Week 7",
+          "title": "Mini Projects & Capstone",
+          "duration": "Weeks 7–8",
           "topics": [
-            "Excel fundamentals",
-            "Formulas & functions",
-            "Pivot tables",
-            "Data cleaning in Excel",
-            "Basic dashboards"
+            "End-to-end Python project",
+            "Simple AI/ML application",
+            "Presentation & Review"
           ],
-          "practical": ["Build a small Excel dashboard."],
-          "outcome": "Students gain industry-relevant Excel skills."
-        },
-        {
-          "phase": "Module 5",
-          "title": "Introduction to Data Analytics & Final Project",
-          "duration": "Week 8",
-          "topics": [
-            "What is Data Analytics?",
-            "Types of analytics (Descriptive, Diagnostic, Predictive, Prescriptive)",
-            "KPI understanding",
-            "Business case study",
-            "Analytical thinking approach"
-          ],
-          "finalProject": [
-            "Retail sales analysis",
-            "Student performance analysis",
-            "Marketing campaign analysis",
-            "Small business profit analysis"
-          ],
-          "projectComponents": [
-            "Data cleaning",
-            "Data analysis",
-            "Visualization",
-            "Insight report presentation"
-          ]
+          "outcome": "Students leave with a working portfolio project."
         }
       ],
       "careerPath": [
-        "Join Advanced Data Science Program",
-        "Apply for Data Analyst Intern roles",
-        "Support business analytics teams",
-        "Work on freelance analytics projects"
+        "Join Advanced Data Science or Data Analytics Program",
+        "Apply for Python Developer Intern roles",
+        "Work on freelance automation projects",
+        "Explore AI & ML further"
       ],
       "eligibility": [
-        "Anyone interested in data",
-        "Students with no coding background",
-        "Fresh graduates",
-        "Working professionals looking to upskill"
+        "Students from any stream",
+        "No coding background required",
+        "Fresh Graduates",
+        "Working Professionals looking to upskill"
+      ]
+    },
+    {
+      "id": "coding",
+      "image": "images/coding.webp",
+      "title": "Coding for Kids & Beginners",
+      "subtitle": "Beginner Coding Program",
+      "duration": "Flexible (4–12 Weeks)",
+      "fee": "₹8,000",
+      "level": "Beginner",
+      "mode": "Offline | Live Online",
+      "shortDescription": "Learn to code from scratch. From block-based visual coding to real programming languages — we make coding fun, logical, and career-ready.",
+      "highlights": [
+        "Course Completion Certificate",
+        "Hands-on Practical Training",
+        "Choose your coding language",
+        "Project-based learning",
+        "Age-appropriate curriculum",
+        "Small batch, personalised mentoring"
+      ],
+      "tracks": [
+        {
+          "track": "Track 1",
+          "title": "Scratch — Visual Block Coding",
+          "ageGroup": "Ages 8–12",
+          "duration": "4 Weeks",
+          "topics": [
+            "Introduction to Scratch environment",
+            "Understanding blocks, sprites & backdrops",
+            "Sequences, loops & conditions",
+            "Events & broadcasts",
+            "Creating animations",
+            "Building simple games",
+            "Storytelling with Scratch"
+          ],
+          "project": "Build your own animated story or mini-game in Scratch.",
+          "outcome": "Kids understand logic and computational thinking through visual coding."
+        },
+        {
+          "track": "Track 2",
+          "title": "Python — The Beginner's Language",
+          "ageGroup": "Ages 12+",
+          "duration": "6 Weeks",
+          "topics": [
+            "Introduction to Python",
+            "Variables, data types & operators",
+            "Conditional statements & loops",
+            "Functions & modules",
+            "Working with lists & dictionaries",
+            "Basic problem solving",
+            "Simple automation scripts",
+            "Turtle graphics for visual coding"
+          ],
+          "project": "Build a Python quiz game or a simple calculator app.",
+          "outcome": "Students gain real programming skills with a widely-used language."
+        },
+        {
+          "track": "Track 3",
+          "title": "C Programming — Fundamentals",
+          "ageGroup": "Ages 13+",
+          "duration": "6 Weeks",
+          "topics": [
+            "Introduction to C & compiler setup",
+            "Variables, data types & operators",
+            "Input/output with printf & scanf",
+            "Conditional statements & loops",
+            "Functions & recursion",
+            "Arrays & strings",
+            "Pointers & memory basics",
+            "Structures & simple programs"
+          ],
+          "project": "Build a student grade calculator or a number-guessing game.",
+          "outcome": "Students understand how programming works at a fundamental level — a strong base for any language."
+        },
+        {
+          "track": "Track 4",
+          "title": "C++ — From C to Object-Oriented",
+          "ageGroup": "Ages 14+",
+          "duration": "8 Weeks",
+          "topics": [
+            "C++ vs C — what's new",
+            "Variables, data types & operators",
+            "Control flow — if, switch, loops",
+            "Functions & references",
+            "Arrays, vectors & strings",
+            "Object-Oriented Programming (OOP)",
+            "Classes, objects & constructors",
+            "Inheritance & polymorphism",
+            "Basic STL (Standard Template Library)",
+            "Simple file handling"
+          ],
+          "project": "Build a console-based inventory or task manager application.",
+          "outcome": "Students are ready for competitive programming and engineering entrance coding rounds."
+        },
+        {
+          "track": "Track 5",
+          "title": "Java — Object-Oriented Programming",
+          "ageGroup": "Ages 14+",
+          "duration": "8 Weeks",
+          "topics": [
+            "Introduction to Java & JDK setup",
+            "Variables, data types & operators",
+            "Control flow — if, switch, loops",
+            "Methods & scope",
+            "Arrays & strings",
+            "Object-Oriented Programming (OOP) basics",
+            "Classes & objects",
+            "Inheritance & polymorphism",
+            "Basic exception handling",
+            "Simple console applications"
+          ],
+          "project": "Build a simple Student Management System or a console-based game.",
+          "outcome": "Students are prepared for school/college programming exams and competitive coding."
+        },
+        {
+          "track": "Track 6",
+          "title": "Web Coding — HTML, CSS & JavaScript",
+          "ageGroup": "Ages 13+",
+          "duration": "6 Weeks",
+          "topics": [
+            "HTML basics — structure of a webpage",
+            "CSS — styling and layouts",
+            "Flexbox & responsive design basics",
+            "JavaScript fundamentals",
+            "DOM manipulation",
+            "Forms & events",
+            "Build and deploy a simple website"
+          ],
+          "project": "Build and publish your own personal website.",
+          "outcome": "Students can create real websites and understand how the internet works."
+        }
+      ],
+      "eligibility": [
+        "Students aged 8 and above",
+        "No prior coding experience needed",
+        "School students — any grade",
+        "Parents looking to give their child a head start"
       ]
     }
   ]

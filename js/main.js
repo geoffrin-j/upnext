@@ -116,9 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (href !== '#') {
-                e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -496,7 +496,7 @@ function initPromoSlider() {
 function initWhatsApp() {
     const msg = encodeURIComponent("Hi upNext, I'd like to know more about your programs.");
     const a = document.createElement('a');
-    a.href = `https://wa.me/919895234510?text=${msg}`;
+    a.href = `https://wa.me/918891404057?text=${msg}`;
     a.className = 'wa-fab';
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
@@ -523,7 +523,279 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroParticles();
     startTypewriter();
     initWhatsApp();
+    initAnnouncementBar();
+    initBootcampModal();
 });
+
+// ─── Boot Camp Registration Modal ─────────────────────────────
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzzdBHyuCBor7BNAOkyPuPVecpuRFq9gCDE88NKPs-Wwoc7nMDDBG4-OKPi4vXDKiNg/exec';
+
+function sendToSheet(payload) {
+    return new Promise(resolve => {
+        const qs     = new URLSearchParams({ data: JSON.stringify(payload) });
+        const iframe = document.createElement('iframe');
+        iframe.style.cssText = 'display:none;position:fixed;';
+        iframe.src = `${APPS_SCRIPT_URL}?${qs}&t=${Date.now()}`;
+        document.body.appendChild(iframe);
+        setTimeout(() => { document.body.removeChild(iframe); resolve(); }, 3000);
+    });
+}
+
+function initBootcampModal() {
+    const modal     = document.getElementById('bootcampModal');
+    const openBtn   = document.getElementById('announcementRegisterBtn');
+    const closeBtn  = document.getElementById('modalClose');
+    const form      = document.getElementById('bootcampForm');
+    const success   = document.getElementById('modalSuccess');
+    const submitBtn = document.getElementById('bootcampSubmitBtn');
+    if (!modal) return;
+
+    function openModal(e) {
+        if (e) e.preventDefault();
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        success.hidden = true;
+        success.style.display = '';
+        document.querySelector('.modal-header').style.display = '';
+        form.reset();
+        form.style.display = '';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Registration';
+    }
+
+    if (openBtn) openBtn.addEventListener('click', e => {
+        const href = openBtn.getAttribute('href');
+        if (!href || href === '#') openModal(e);
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+    const successCloseBtn = document.getElementById('successCloseBtn');
+    if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
+
+    const courseSelect = document.getElementById('bc-course');
+    const deviceWrap   = document.getElementById('bc-device-wrap');
+    const deviceSelect = document.getElementById('bc-device');
+    const feeNote      = document.getElementById('bc-fee-note');
+
+    const OFFLINE_BOOTCAMP = '1-Day AI Bootcamp (Offline - Saturdays)';
+    const ONLINE_BOOTCAMP  = 'AI Bootcamp (Online - 5 hours, 1 hour per day)';
+    const DS_COURSE        = 'Data Science and Machine Learning Foundation Course (April - May)';
+
+    // Show/hide device section and set fee based on course
+    if (courseSelect && deviceWrap) {
+        courseSelect.addEventListener('change', () => {
+            const val = courseSelect.value;
+            const showDevice = val === OFFLINE_BOOTCAMP;
+            deviceWrap.hidden = !showDevice;
+            deviceSelect.required = showDevice;
+            if (!showDevice) deviceSelect.value = '';
+
+            if (val === ONLINE_BOOTCAMP) {
+                feeNote.textContent = '💻 Course fee: ₹500 (online)';
+                feeNote.className = 'bc-fee-note bc-fee-own';
+                feeNote.hidden = false;
+            } else if (val === DS_COURSE) {
+                feeNote.textContent = '📚 Course fee: ₹5,000';
+                feeNote.className = 'bc-fee-note bc-fee-own';
+                feeNote.hidden = false;
+            } else {
+                // Offline bootcamp — fee depends on device
+                feeNote.hidden = true;
+                feeNote.textContent = '';
+            }
+        });
+    }
+
+    if (deviceSelect && feeNote) {
+        deviceSelect.addEventListener('change', () => {
+            // Only for offline bootcamp — device choice determines fee
+            if (courseSelect.value !== OFFLINE_BOOTCAMP) return;
+            const val = deviceSelect.value;
+            if (val.startsWith('Yes')) {
+                feeNote.textContent = '💻 Admission fee: ₹500 (own device)';
+                feeNote.className = 'bc-fee-note bc-fee-own';
+            } else if (val.startsWith('No')) {
+                feeNote.textContent = '🖥️ Admission fee: ₹750 (device provided)';
+                feeNote.className = 'bc-fee-note bc-fee-provided';
+            } else {
+                feeNote.textContent = 'Fee will be confirmed based on device availability.';
+                feeNote.className = 'bc-fee-note bc-fee-unsure';
+            }
+            feeNote.hidden = false;
+        });
+    }
+
+    // ── Inline field validation
+    function showError(input, msg) {
+        let err = input.parentElement.querySelector('.field-error');
+        if (!err) {
+            err = document.createElement('span');
+            err.className = 'field-error';
+            input.parentElement.appendChild(err);
+        }
+        err.textContent = msg;
+        input.classList.add('input-error');
+    }
+    function clearError(input) {
+        const err = input.parentElement.querySelector('.field-error');
+        if (err) err.textContent = '';
+        input.classList.remove('input-error');
+    }
+
+    const phoneInput       = document.getElementById('bc-phone');
+    const phoneHidden      = document.getElementById('bc-phone-hidden');
+    const countryCodeSelect = document.getElementById('bc-country-code');
+    const emailInput       = document.getElementById('bc-email');
+
+    function validatePhone() {
+        const code = countryCodeSelect.value;
+        const num  = phoneInput.value.trim().replace(/\s+/g, '');
+        if (!num) return true; // empty handled by required
+        if (code === '+91') {
+            if (!/^[6-9][0-9]{9}$/.test(num)) {
+                showError(phoneInput, 'Enter a valid 10-digit Indian mobile number');
+                return false;
+            }
+        } else {
+            if (!/^[0-9]{6,14}$/.test(num)) {
+                showError(phoneInput, 'Enter a valid phone number (digits only, no country code)');
+                return false;
+            }
+        }
+        clearError(phoneInput);
+        return true;
+    }
+
+    phoneInput.addEventListener('blur', validatePhone);
+    phoneInput.addEventListener('input', () => clearError(phoneInput));
+
+    emailInput.addEventListener('blur', () => {
+        const val = emailInput.value.trim();
+        if (!val) return;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+            showError(emailInput, 'Enter a valid email address');
+        } else {
+            clearError(emailInput);
+        }
+    });
+    emailInput.addEventListener('input', () => clearError(emailInput));
+
+    // Auto-open if URL contains #register
+    if (window.location.hash === '#register') openModal();
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        // Custom validation
+        let hasError = false;
+        if (!validatePhone()) hasError = true;
+        if (!hasError) {
+            phoneHidden.value = countryCodeSelect.value + phoneInput.value.trim().replace(/\s+/g, '');
+        }
+        const emailVal = emailInput.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+            showError(emailInput, 'Enter a valid email address');
+            hasError = true;
+        }
+        if (hasError) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting…';
+
+        const courseVal = form.querySelector('#bc-course').value;
+        const WA_GROUPS = {
+            '1-Day AI Bootcamp (Offline - Saturdays)':                           'https://chat.whatsapp.com/BOP337J4F9DBTfLJiKxtDM?mode=gi_t',
+            'AI Bootcamp (Online \u2013 5 hours, 1 hour per day)':               'https://chat.whatsapp.com/GND05FLkRLR3A0t6cSLA8A?mode=gi_t',
+            'Data Science and Machine Learning Foundation Course (April - May)': 'https://chat.whatsapp.com/G8VuHp5x2BpHQJ245j3Q2c?mode=gi_t',
+        };
+
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+        })
+        .then(() => {
+            const successMsg = document.getElementById('modalSuccessMsg');
+            if (successMsg) successMsg.innerHTML = `You're registered for <strong>${courseVal}</strong>. We'll reach out with confirmation and details shortly.`;
+            const waBtn = document.getElementById('waGroupBtn');
+            if (waBtn && WA_GROUPS[courseVal]) {
+                waBtn.href = WA_GROUPS[courseVal];
+                waBtn.style.display = 'inline-flex';
+            } else if (waBtn) {
+                waBtn.style.display = 'none';
+            }
+            form.style.display = 'none';
+            document.querySelector('.modal-header').style.display = 'none';
+            success.removeAttribute('hidden');
+            success.style.display = 'flex';
+        })
+        .catch(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Registration';
+            alert('Submission failed. Please check your connection and try again.');
+        });
+    });
+}
+
+// ─── Announcement Bar Dismiss + Rotate ─────────────────────────
+function initAnnouncementBar() {
+    const bar        = document.getElementById('announcementBar');
+    const btn        = document.getElementById('announcementClose');
+    const tagEl      = document.getElementById('announcementTag');
+    const textEl     = document.getElementById('announcementText');
+    const ctaEl      = document.getElementById('announcementRegisterBtn');
+    if (!bar || !btn) return;
+
+    if (sessionStorage.getItem('announcementDismissed')) {
+        bar.classList.add('hidden');
+        return;
+    }
+    btn.addEventListener('click', () => {
+        bar.classList.add('hidden');
+        sessionStorage.setItem('announcementDismissed', '1');
+    });
+
+    const messages = [
+        {
+            tag:  'Upcoming',
+            text: '<strong>Summer Classes</strong> — Enroll now and get a head start this summer!',
+            cta:  { label: 'Register Now →', href: '#', id: 'announcementRegisterBtn' }
+        },
+        {
+            tag:  'For Educators',
+            text: '<strong>Faculty Development Program</strong> — AI & Data Science training for college faculty.',
+            cta:  { label: 'Register Now →', href: 'fdp.html', id: '' }
+        }
+    ];
+
+    let current = 0;
+
+    function rotateTo(index) {
+        const inner = document.getElementById('announcementInner');
+        inner.style.opacity = '0';
+        setTimeout(() => {
+            const m = messages[index];
+            tagEl.textContent  = m.tag;
+            textEl.innerHTML   = m.text;
+            ctaEl.textContent  = m.cta.label;
+            ctaEl.href         = m.cta.href;
+            if (m.cta.id) ctaEl.id = m.cta.id;
+            inner.style.opacity = '1';
+        }, 300);
+    }
+
+    setInterval(() => {
+        current = (current + 1) % messages.length;
+        rotateTo(current);
+    }, 4000);
+}
 
 // Utility function to get URL parameters
 function getURLParameter(name) {

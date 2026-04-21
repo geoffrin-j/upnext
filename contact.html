@@ -6,6 +6,66 @@
     <title>Contact Us - upNext</title>
     <meta name="description" content="Get in touch with upNext. Apply now or schedule a counseling session.">
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website">
+    <meta property="og:site_name"   content="upNext">
+    <meta property="og:url"         content="https://www.upnext.academy/contact.html">
+    <meta property="og:title"       content="Contact Us — upNext">
+    <meta property="og:description" content="Get in touch with upNext. Apply now or schedule a counseling session.">
+    <meta property="og:image"       content="https://www.upnext.academy/images/og-default.webp">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:site"        content="@upnextacademy">
+    <meta name="twitter:title"       content="Contact Us — upNext">
+    <meta name="twitter:description" content="Get in touch with upNext. Apply now or schedule a counseling session.">
+    <meta name="twitter:image"       content="https://www.upnext.academy/images/og-default.webp">
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.upnext.academy/contact.html">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="contact upNext, AI course admission Thrissur, upNext academy address, enroll Data Science Kerala">
+    <meta name="author" content="upNext">
+    <!-- JSON-LD: ContactPage + LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ContactPage",
+          "url": "https://www.upnext.academy/contact.html",
+          "name": "Contact upNext",
+          "description": "Get in touch with upNext. Apply now or schedule a counseling session for AI and Data Science courses."
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "upNext",
+          "url": "https://www.upnext.academy",
+          "telephone": "+91-8891404057",
+          "email": "contact@upnext.academy",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3rd Floor, Bright Towers, St. Thomas College Road",
+            "addressLocality": "Thrissur",
+            "addressRegion": "Kerala",
+            "postalCode": "680001",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "10.5276",
+            "longitude": "76.2144"
+          },
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -26,7 +86,9 @@
             <div class="contact-content">
                 <div class="contact-form">
                     <h2>Send Us a Message</h2>
-                    <form id="contactForm">
+                    <form id="contactForm" name="contact" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact">
+
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -44,19 +106,19 @@
 
                         <div class="form-group">
                             <label for="course">Interested In *</label>
-                            <select id="course" name="course" required>
+                            <select id="course" name="interested_in" required>
                                 <option value="">-- Select a Program --</option>
-                                <option value="data-science">Data Science & Machine Learning (6 Months)</option>
-                                <option value="ai-genai">AI & Generative AI (3-4 Months)</option>
-                                <option value="python-analytics">Python + Data Analytics (2 Months)</option>
-                                <option value="counseling">Career Counseling Session</option>
-                                <option value="other">General Inquiry</option>
+                                <option value="Data Science &amp; Machine Learning (6 Months)">Data Science &amp; Machine Learning (6 Months)</option>
+                                <option value="Data Analytics (3 Months)">Data Analytics (3 Months)</option>
+                                <option value="Python with AI (2 Months)">Python with AI (2 Months)</option>
+                                <option value="Coding for Kids &amp; Beginners">Coding for Kids &amp; Beginners</option>
+                                <option value="General Inquiry">General Inquiry</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="background">Educational Background</label>
-                            <input type="text" id="background" name="background" placeholder="e.g., BTech CS, BSc Mathematics, etc.">
+                            <input type="text" id="background" name="educational_background" placeholder="e.g., BTech CS, BSc Mathematics, etc.">
                         </div>
 
                         <div class="form-group">
@@ -64,8 +126,12 @@
                             <textarea id="message" name="message" placeholder="Tell us about your goals and any questions you have..."></textarea>
                         </div>
 
-                        <button type="submit" class="submit-btn">Submit Application</button>
+                        <button type="submit" class="submit-btn" id="contactSubmitBtn">Submit</button>
                     </form>
+                    <div id="contactSuccess" hidden style="text-align:center; padding: 2rem 0;">
+                        <p style="font-size: 1.2rem; font-weight: 600; color: var(--emerald-deep); margin-bottom: 0.5rem;">Message Sent!</p>
+                        <p style="color: var(--text-light);">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                    </div>
                 </div>
 
                 <div class="contact-info">
@@ -79,7 +145,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>hello@upnext.in</p>
+                            <p>contact@upnext.academy</p>
                         </div>
                     </div>
 
@@ -91,7 +157,7 @@
                         </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>+91 989 523 4510</p>
+                            <p>+91 8891404057</p>
                             <p style="font-size: 0.9rem; color: var(--text-light);">Available 9 AM - 6 PM</p>
                         </div>
                     </div>
@@ -105,10 +171,9 @@
                         <div>
                             <h4>Office Address</h4>
                             <p>upNext<br>
-                            3C Vimson Serene<br>
-                            Opposite St. Thomas College<br>
-                            Thrissur 680 001<br>
-                            Kerala, India</p>
+                            3rd Floor, Bright Towers<br>
+                            St. Thomas College Road<br>
+                            Thrissur, Kerala – 680001</p>
                         </div>
                     </div>
 
@@ -219,7 +284,32 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            window.appUtils.handleFormSubmit('contactForm', 'Thank you for your interest! We will contact you within 24 hours.');
+            const form       = document.getElementById('contactForm');
+            const submitBtn  = document.getElementById('contactSubmitBtn');
+            const successDiv = document.getElementById('contactSuccess');
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                if (!form.checkValidity()) { form.reportValidity(); return; }
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting…';
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                })
+                .then(() => {
+                    form.style.display = 'none';
+                    successDiv.hidden = false;
+                })
+                .catch(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit';
+                    alert('Submission failed. Please try again.');
+                });
+            });
 
             // Pre-select course if coming from URL parameter
             const urlParams = new URLSearchParams(window.location.search);
