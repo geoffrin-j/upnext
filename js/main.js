@@ -207,6 +207,7 @@ function initScrollAnimations() {
         '.step-item',
         'section h2',
         '.section-subtitle',
+        '.testimonial-card',
     ];
 
     const observer = new IntersectionObserver((entries) => {
@@ -525,7 +526,108 @@ document.addEventListener('DOMContentLoaded', () => {
     initWhatsApp();
     initAnnouncementBar();
     initBootcampModal();
+    initReviewForm();
+    initTestimonialsCarousel();
 });
+
+// ─── Testimonials Carousel ────────────────────────────────────
+function initTestimonialsCarousel() {
+    const carousel = document.getElementById('testimonialsCarousel');
+    const track    = document.getElementById('testimonialsTrack');
+    const dotsEl   = document.getElementById('tDots');
+    if (!carousel || !track) return;
+
+    const cards = Array.from(track.children);
+    const total = cards.length;
+    let current = 0;
+    let timer;
+
+    function spv()   { return window.innerWidth >= 640 ? 2 : 1; }
+    function stops() { return total - spv() + 1; }
+
+    function buildDots() {
+        dotsEl.innerHTML = '';
+        for (let i = 0; i < stops(); i++) {
+            const dot = document.createElement('button');
+            dot.className = 't-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
+            dot.addEventListener('click', () => goTo(i));
+            dotsEl.appendChild(dot);
+        }
+    }
+
+    function goTo(idx) {
+        const s = stops();
+        current = ((idx % s) + s) % s;
+        track.style.transform = `translateX(-${cards[current].offsetLeft}px)`;
+        dotsEl.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    function startAuto() { timer = setInterval(() => goTo(current + 1), 5000); }
+    function stopAuto()  { clearInterval(timer); }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { buildDots(); current = 0; goTo(0); }, 200);
+    });
+
+    document.getElementById('tPrev').addEventListener('click', () => { stopAuto(); goTo(current - 1); startAuto(); });
+    document.getElementById('tNext').addEventListener('click', () => { stopAuto(); goTo(current + 1); startAuto(); });
+
+    let touchX = 0;
+    track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+        const diff = touchX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) { stopAuto(); goTo(current + (diff > 0 ? 1 : -1)); startAuto(); }
+    });
+
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+
+    buildDots();
+    goTo(0);
+    startAuto();
+}
+
+// ─── Student Review Form ───────────────────────────────────────
+function initReviewForm() {
+    const form = document.getElementById('reviewForm');
+    if (!form) return;
+
+    // Update file label when a file is chosen
+    const fileInput = document.getElementById('reviewPhoto');
+    const fileLabel = document.getElementById('fileLabel');
+    if (fileInput && fileLabel) {
+        fileInput.addEventListener('change', () => {
+            fileLabel.textContent = fileInput.files[0]
+                ? fileInput.files[0].name
+                : 'Choose a photo';
+        });
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('reviewSubmitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+
+        try {
+            const formData = new FormData(form);
+            await fetch('/', {
+                method: 'POST',
+                body: formData,
+            });
+            form.hidden = true;
+            document.getElementById('reviewSuccess').hidden = false;
+        } catch {
+            btn.disabled = false;
+            btn.textContent = 'Submit Review';
+            alert('Something went wrong. Please try again.');
+        }
+    });
+}
 
 // ─── Boot Camp Registration Modal ─────────────────────────────
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzzdBHyuCBor7BNAOkyPuPVecpuRFq9gCDE88NKPs-Wwoc7nMDDBG4-OKPi4vXDKiNg/exec';

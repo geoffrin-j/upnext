@@ -80,6 +80,10 @@
       ]
     }
     </script>
+    <!-- Meta Pixel -->
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1273080377784841');fbq('track','PageView');</script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1273080377784841&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -505,6 +509,147 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header-center">
+                <p class="section-label-tag">Student Stories</p>
+                <h2>What Our Students Say</h2>
+                <p class="section-subtitle">Real experiences from real learners</p>
+            </div>
+            <div class="testimonials-carousel" id="testimonialsCarousel">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark">&ldquo;</div>
+                        <p class="testimonial-text">It was a very good class — it taught me to use applications much better. My favourite part was Scratch; it was really interesting. The best AI boot camp I have attended. Thank you!</p>
+                        <div class="testimonial-footer">
+                            <img src="images/testimonial-rihan.jpeg" alt="Rihan Geo George" class="testimonial-avatar" loading="lazy">
+                            <div>
+                                <p class="testimonial-name">Rihan Geo George</p>
+                                <p class="testimonial-course">NextBot — AI Boot Camp</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark">&ldquo;</div>
+                        <p class="testimonial-text">I found this boot camp to be very interesting! I learned the basics of AI in just 5 days and got to create cool games using Scratch. I also learned how a good prompt can really change the output. Our teacher explained all the topics very well and thoroughly. Thank you!</p>
+                        <div class="testimonial-footer">
+                            <img src="images/testimonial-zaynab.jpeg" alt="Zaynab Zameel" class="testimonial-avatar" loading="lazy">
+                            <div>
+                                <p class="testimonial-name">Zaynab Zameel</p>
+                                <p class="testimonial-course">NextBot — AI Boot Camp</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark">&ldquo;</div>
+                        <p class="testimonial-text">I would like to thank Famitha Mam and the upNext team for this wonderful 10-day session. Before attending, I had only basic knowledge of Python and was confused about Data Science and ML for my upcoming semester. These sessions helped me understand clearly and gave me much more confidence. Famitha Mam explained everything in a very simple and understandable way. Thank you!</p>
+                        <div class="testimonial-footer">
+                            <img src="images/testimonial-jasma.jpeg" alt="Jasma Usman" class="testimonial-avatar" loading="lazy">
+                            <div>
+                                <p class="testimonial-name">Jasma Usman</p>
+                                <p class="testimonial-course">Faculty Development Program &nbsp;·&nbsp; Asst. Professor, ISS Arts &amp; Science College</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote-mark">&ldquo;</div>
+                        <p class="testimonial-text">I joined the AI Bootcamp online by upNext and it was really fun! After the first class where we learned the basics, we started doing practical activities like Scratch programming and making stories with Gemini. I liked those sessions the most! Our teacher, Mufeeda Teacher, was very kind and calmly answered all our questions. Thank you!</p>
+                        <div class="testimonial-footer">
+                            <img src="images/testimonial-diya.jpeg" alt="Diya Anil" class="testimonial-avatar" loading="lazy">
+                            <div>
+                                <p class="testimonial-name">Diya Anil</p>
+                                <p class="testimonial-course">NextBot — AI Boot Camp &nbsp;·&nbsp; Std. 6, Thiruvananthapuram</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
+                    </div>
+                </div>
+                <button class="t-arrow t-arrow--prev" id="tPrev" aria-label="Previous">&#8592;</button>
+                <button class="t-arrow t-arrow--next" id="tNext" aria-label="Next">&#8594;</button>
+                <div class="t-dots" id="tDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leave a Review Section -->
+    <section class="review-section">
+        <div class="container">
+            <div class="review-layout">
+                <div class="review-intro">
+                    <p class="section-label-tag">Student Reviews</p>
+                    <h2>Share Your Experience</h2>
+                    <p class="section-subtitle" style="margin-bottom:0">Loved your course? Tell others about it — your words inspire the next learner.</p>
+                </div>
+                <div class="review-form-wrap">
+                    <form id="reviewForm" name="student-review" data-netlify="true" enctype="multipart/form-data">
+                        <input type="hidden" name="form-name" value="student-review">
+
+                        <div class="review-row">
+                        <div class="form-group">
+                            <label for="reviewName">Your Name *</label>
+                            <input type="text" id="reviewName" name="name" placeholder="Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reviewCourse">Course Attended *</label>
+                            <select id="reviewCourse" name="course" required>
+                                <option value="">-- Select your course --</option>
+                                <option value="NextBot — AI Boot Camp">NextBot — AI Boot Camp</option>
+                                <option value="Data Science &amp; Machine Learning">Data Science &amp; Machine Learning</option>
+                                <option value="Data Analytics">Data Analytics</option>
+                                <option value="Python with AI">Python with AI</option>
+                                <option value="Coding for Kids &amp; Beginners">Coding for Kids &amp; Beginners</option>
+                            </select>
+                        </div>
+                        </div><!-- /.review-row -->
+
+                        <div class="form-group">
+                            <label>Rating *</label>
+                            <div class="star-rating" role="radiogroup" aria-label="Rating">
+                                <input type="radio" id="star5" name="rating" value="5 stars" required>
+                                <label for="star5" aria-label="5 stars">★</label>
+                                <input type="radio" id="star4" name="rating" value="4 stars">
+                                <label for="star4" aria-label="4 stars">★</label>
+                                <input type="radio" id="star3" name="rating" value="3 stars">
+                                <label for="star3" aria-label="3 stars">★</label>
+                                <input type="radio" id="star2" name="rating" value="2 stars">
+                                <label for="star2" aria-label="2 stars">★</label>
+                                <input type="radio" id="star1" name="rating" value="1 star">
+                                <label for="star1" aria-label="1 star">★</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reviewText">Your Review *</label>
+                            <textarea id="reviewText" name="review" rows="4" placeholder="Tell us about your experience — what did you enjoy most?" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reviewPhoto">Your Photo <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+                            <div class="file-upload-wrap">
+                                <input type="file" id="reviewPhoto" name="photo" accept="image/*" class="file-input">
+                                <label for="reviewPhoto" class="file-upload-label">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                    <span id="fileLabel">Choose a photo</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="reviewSubmitBtn">Submit Review</button>
+                    </form>
+                    <div id="reviewSuccess" hidden style="text-align:center;padding:2.5rem 1rem;">
+                        <p style="font-size:1.3rem;font-weight:700;color:var(--emerald-deep);margin-bottom:0.5rem;">Thank you! 🙌</p>
+                        <p style="color:var(--text-light);">Your review has been submitted. We appreciate you sharing your experience!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="section-dark-cta">
         <div class="section-orb section-orb-teal" style="width:360px;height:360px;top:-100px;left:-80px;" aria-hidden="true"></div>
@@ -558,8 +703,8 @@
                     <select id="bc-course" name="course" required>
                         <option value="" disabled selected>Choose a course</option>
                         <option value="1-Day AI Bootcamp (Offline - Saturdays)">1-Day AI Bootcamp (Offline – Saturdays)</option>
-                        <option value="AI Bootcamp (Online - 5 hours, 1 hour per day)">AI Bootcamp (Online – 5 hours, 1 hour per day)</option>
-                        <option value="Data Science and Machine Learning Foundation Course (April - May)">Data Science &amp; Machine Learning Foundation Course (April – May)</option>
+                        <option value="AI Bootcamp (Online - 5 Days, 1 hour per day)">AI Bootcamp (Online – 5 Days, 1 hour per day)</option>
+                        <option value="Data Science and Machine Learning Foundation Course">Data Science &amp; Machine Learning Foundation Course</option>
                     </select>
                 </div>
 
