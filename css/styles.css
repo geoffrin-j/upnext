@@ -2682,8 +2682,8 @@ html[data-theme="dark"] .feature-card:hover {
     position: relative;
     background: var(--light-card);
     border: 1px solid var(--border);
-    border-radius: 9999px 9999px 18px 18px;
-    padding: 0 1.8rem 2.2rem;
+    border-radius: 20px;
+    padding: 2.4rem 1.8rem 2.2rem;
     text-align: center;
     box-shadow: 0 10px 30px rgba(15,23,42,0.08);
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -2703,25 +2703,13 @@ html[data-theme="dark"] .founder-card:hover {
     box-shadow: 0 16px 40px rgba(0,0,0,0.45);
 }
 
-.founder-card::after {
-    content: '';
-    position: absolute;
-    left: 14%;
-    right: 14%;
-    bottom: 0;
-    height: 4px;
-    border-radius: 0 0 4px 4px;
-    background: var(--grad-brand);
-}
-
 .founder-avatar {
-    width: 128px;
-    height: 128px;
-    margin: -64px auto 1.1rem;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.3rem;
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    border: 5px solid var(--light-card);
     box-shadow: 0 8px 20px rgba(15,23,42,0.18);
 }
 
