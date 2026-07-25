@@ -162,6 +162,30 @@ async function loadCoursesData() {
     }
 }
 
+// Load news data
+async function loadNewsData() {
+    try {
+        const response = await fetch('content/news.json');
+        const data = await response.json();
+        return data.news;
+    } catch (error) {
+        console.error('Error loading news:', error);
+        return [];
+    }
+}
+
+// Load gallery data
+async function loadGalleryData() {
+    try {
+        const response = await fetch('content/gallery.json');
+        const data = await response.json();
+        return data.gallery;
+    } catch (error) {
+        console.error('Error loading gallery:', error);
+        return [];
+    }
+}
+
 // ─── Typewriter (restartable via generation token) ────────────
 let twGen = 0;  // increment to cancel any in-flight tick
 
@@ -908,6 +932,8 @@ function getURLParameter(name) {
 // Export functions for use in other scripts
 window.appUtils = {
     loadCoursesData,
+    loadNewsData,
+    loadGalleryData,
     handleFormSubmit,
     getURLParameter
 };

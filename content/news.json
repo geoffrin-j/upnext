@@ -1,0 +1,31 @@
+{
+    "news": [
+        {
+            "id": "vijnabheri-ai-literacy-mission-2026",
+            "date": "July 2026",
+            "title": "AI Partner for Vijnabheri, Malappuram District AI Literacy Mission",
+            "description": "upNext joined as AI partner for \"Vijnabheri\" (Vijnana Bheri) — the AI Literacy Mission and AI Sakshartha Mission by Seethi Sahib Memorial Polytechnic College, Tirur, covering English, Soft Skills, and AI Skills — launched on 21st July 2026.",
+            "images": [
+                "images/seethi.webp"
+            ]
+        },
+        {
+            "id": "fdp-ai-powered-pedagogy-2026",
+            "date": "July 2026",
+            "title": "FDP Session on AI-Powered Pedagogy at ISS Arts and Science College",
+            "description": "Conducted a Faculty Development Programme session on \"AI-Powered Pedagogy: Generative AI for Modern Teaching\" at ISS Arts and Science College on 18th July 2026, as part of the EmpowerED 2K26 series, alongside Mohammed Sabeeh P P, Founder & CEO of Xenora Learning.",
+            "images": [
+                "images/pedagogy.webp"
+            ]
+        },
+        {
+            "id": "ssm-polytechnic-orientation-2026",
+            "date": "June 2026",
+            "title": "Orientation Program on Data Science and Machine Learning at SSM Polytechnic, Tirur",
+            "description": "Conducted an orientation program on Data Science and Machine Learning for final year Diploma in Computer Science Engineering students at Seethi Sahib Memorial Polytechnic College, Tirur, on 19th June 2026.",
+            "images": [
+                "images/cse1.webp"
+            ]
+        }
+    ]
+}
