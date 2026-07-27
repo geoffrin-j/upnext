@@ -3,6 +3,7 @@ let contentHandle = null;
 let imagesHandle = null;
 let newsData = [];
 let galleryData = [];
+let testimonialsData = [];
 
 const folderStatus = document.getElementById('folderStatus');
 const pickFolderBtn = document.getElementById('pickFolderBtn');
@@ -26,6 +27,7 @@ pickFolderBtn.addEventListener('click', async () => {
 
         await loadNews();
         await loadGallery();
+        await loadTestimonials();
     } catch (error) {
         if (error.name === 'AbortError') return;
         console.error(error);
@@ -239,5 +241,76 @@ document.getElementById('galleryForm').addEventListener('submit', async (e) => {
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Add to Gallery';
+    }
+});
+
+// ─── Testimonials ───────────────────────────────────────────
+
+async function loadTestimonials() {
+    try {
+        const data = await readJson(contentHandle, 'testimonials.json');
+        testimonialsData = data.testimonials || [];
+    } catch (error) {
+        console.error('Error loading testimonials.json:', error);
+        testimonialsData = [];
+    }
+    renderTestimonialsList();
+}
+
+function renderTestimonialsList() {
+    const list = document.getElementById('testimonialsList');
+    if (!testimonialsData.length) {
+        list.innerHTML = '<p>No testimonials yet.</p>';
+        return;
+    }
+    list.innerHTML = testimonialsData.map((item, index) => `
+        <div class="course-list-item">
+            <div>
+                <h4>${item.name}</h4>
+                <p>${item.course} — ${'★'.repeat(item.rating)}</p>
+            </div>
+            <div class="course-actions">
+                <button class="delete-btn" data-index="${index}">Delete</button>
+            </div>
+        </div>
+    `).join('');
+
+    list.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            if (!confirm('Remove this testimonial? (The photo file itself will not be deleted.)')) return;
+            testimonialsData.splice(Number(btn.dataset.index), 1);
+            await writeJson(contentHandle, 'testimonials.json', { testimonials: testimonialsData });
+            renderTestimonialsList();
+        });
+    });
+}
+
+document.getElementById('testimonialForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving...';
+
+    try {
+        const name = document.getElementById('testimonialName').value.trim();
+        const course = document.getElementById('testimonialCourse').value.trim();
+        const rating = Number(document.getElementById('testimonialRating').value);
+        const text = document.getElementById('testimonialText').value.trim();
+        const file = document.getElementById('testimonialPhoto').files[0];
+
+        const image = file ? await saveImage(file) : null;
+
+        testimonialsData.unshift({ name, course, rating, text, image });
+
+        await writeJson(contentHandle, 'testimonials.json', { testimonials: testimonialsData });
+        renderTestimonialsList();
+        e.target.reset();
+        alert('Testimonial added!');
+    } catch (error) {
+        console.error(error);
+        alert(error.message || 'Something went wrong saving this testimonial. See console for details.');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Add Testimonial';
     }
 });

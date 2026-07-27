@@ -186,6 +186,18 @@ async function loadGalleryData() {
     }
 }
 
+// Load testimonials data
+async function loadTestimonialsData() {
+    try {
+        const response = await fetch('content/testimonials.json');
+        const data = await response.json();
+        return data.testimonials;
+    } catch (error) {
+        console.error('Error loading testimonials:', error);
+        return [];
+    }
+}
+
 // ─── Typewriter (restartable via generation token) ────────────
 let twGen = 0;  // increment to cancel any in-flight tick
 
@@ -219,6 +231,31 @@ function startTypewriter() {
 }
 
 // ─── Scroll Reveal (staggered) ────────────────────────────────
+let scrollRevealObserver = null;
+
+function revealElements(sel) {
+    if (!scrollRevealObserver) {
+        scrollRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    scrollRevealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }
+
+    document.querySelectorAll(sel).forEach((el) => {
+        const siblings = el.parentElement
+            ? Array.from(el.parentElement.querySelectorAll(sel))
+            : [el];
+        const idx = siblings.indexOf(el);
+        el.style.setProperty('--reveal-delay', `${idx * 90}ms`);
+        el.classList.add('reveal');
+        scrollRevealObserver.observe(el);
+    });
+}
+
 function initScrollAnimations() {
     const SELECTORS = [
         '.course-card',
@@ -234,27 +271,7 @@ function initScrollAnimations() {
         '.testimonial-card',
     ];
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    SELECTORS.forEach(sel => {
-        document.querySelectorAll(sel).forEach((el) => {
-            // stagger siblings within the same parent
-            const siblings = el.parentElement
-                ? Array.from(el.parentElement.querySelectorAll(sel))
-                : [el];
-            const idx = siblings.indexOf(el);
-            el.style.setProperty('--reveal-delay', `${idx * 90}ms`);
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
-    });
+    SELECTORS.forEach(revealElements);
 }
 
 // ─── 3D Card Tilt ─────────────────────────────────────────────
@@ -551,8 +568,42 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnnouncementBar();
     initBootcampModal();
     initReviewForm();
-    initTestimonialsCarousel();
+    displayTestimonials();
 });
+
+// ─── Testimonials ──────────────────────────────────────────────
+function testimonialInitials(name) {
+    return name.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+}
+
+async function displayTestimonials() {
+    const track = document.getElementById('testimonialsTrack');
+    if (!track) return;
+
+    const testimonials = await window.appUtils.loadTestimonialsData();
+    if (!testimonials.length) return;
+
+    track.innerHTML = testimonials.map(item => `
+        <div class="testimonial-card">
+            <div class="testimonial-quote-mark">&ldquo;</div>
+            <p class="testimonial-text">${item.text}</p>
+            <div class="testimonial-footer">
+                ${item.image
+                    ? `<img src="${item.image}" alt="${item.name}" class="testimonial-avatar" loading="lazy">`
+                    : `<div class="testimonial-avatar testimonial-avatar--initials">${testimonialInitials(item.name)}</div>`
+                }
+                <div>
+                    <p class="testimonial-name">${item.name}</p>
+                    <p class="testimonial-course">${item.course}</p>
+                </div>
+            </div>
+            <div class="testimonial-stars" aria-label="${item.rating} stars">${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}</div>
+        </div>
+    `).join('');
+
+    revealElements('.testimonial-card');
+    initTestimonialsCarousel();
+}
 
 // ─── Testimonials Carousel ────────────────────────────────────
 function initTestimonialsCarousel() {
@@ -934,6 +985,7 @@ window.appUtils = {
     loadCoursesData,
     loadNewsData,
     loadGalleryData,
+    loadTestimonialsData,
     handleFormSubmit,
     getURLParameter
 };
